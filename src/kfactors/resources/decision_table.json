@@ -1,0 +1,78 @@
+{
+  "schema": "kfactors.decision_table/1",
+  "kind": "heuristic",
+  "features": ["mean_abs_acf1", "gap_ratio_1", "spike_share", "p_over_n"],
+  "meta": {
+    "status": "HEURISTIC DRAFT. Hand-written from the literature, the pilot study and a small simulation check; it is not the output of calibrate_decision_table. Replace it with a table calibrated on the full benchmark (kfactors.report.calibrate_decision_table) once that exists.",
+    "semantics": "At a split, the 'then' branch is taken when diagnostics[feature] op threshold holds; otherwise (including NaN) the 'else' branch. Diagnostics come from kfactors.report.diagnose on the correlation matrix (standardize=True).",
+    "revisions": [
+      "2026-11-03, branches 2 and 3: mp_market -> onatski. mp_market assumes equal residual variances once the market mode is removed. With dispersed market betas or idiosyncratic volatilities (typical of stock returns) it over-counts: 250 x 300, one market factor, betas U(0.5, 1.5), idiosyncratic sd lognormal(0, 0.5), 10 seeds: mp_market 3-6, onatski / bai_ng / mp(noise=mean) / parallel 1 in every seed; market + 3 weak factors (sd 0.2/0.15/0.12) at 250 x 300 and 500 x 200, 6 seeds: mp_market 5-8, onatski 4-5 (k = 4). Cost on the grid: of the 68 grid panels (111 designs x 3 seeds) that reach branches 2/3, mean |error| 0.29 for onatski versus 0.15 for mp_market (exact 78% vs 85%); the gap is in market_spiked (0.74 vs 0.37). The branch-2/3 justifications below are the original mp_market argument, kept for the record.",
+      "2026-11-03, branches 1 and 4: parallel gets devolatilize=True. No column-wise null preserves a volatility path shared by all series. On panels with a common AR(0.98) log-volatility (sd 0.5), 250 x 500 (branch 4) and 250 x 500 / 500 x 200 with AR(0.5) noise (branch 1), 4 seeds, k in {0, 3}: without it the routed rule returned 4-20, with it the true k in 22 of 24 panels (else +1 / +2). Cost on the grid panels that reach these branches (3 seeds): branch 4 mean |error| 0.39 -> 0.37, branch 1 2.39 -> 2.51."
+    ],
+    "branches": {
+      "1_serial_dependence": {
+        "rule": "mean_abs_acf1 > 0.2 -> parallel(devolatilize=True, null=circular)",
+        "justification": "Serially correlated idiosyncratic noise inflates the top sample eigenvalues relative to the i.i.d. Marchenko-Pastur null, so i.i.d.-null rules over-count. The pilot (pilot/ncomp/pilot_results.md, AR(1) noise with phi = 0.7) shows parallel analysis with a permutation null, MP and Gavish-Donoho returning on average 4-43 factors instead of 3. A circular-shift null shifts every column independently. It keeps each series' autocorrelation and destroys only the cross-sectional alignment, so it is the matching null. In the kfactors check on the default design grid (sim.design_grid('default'), 3 reps per design, kmax = 10), parallel(null=circular) had the smallest mean error of the tested rules on the spiked ar1-0.5 / ar1-0.9 and pervasive ar1-0.5 designs (-0.33, +0.78 and 0.00 versus -2.0, -3.4 and -0.44 for onatski). On pure AR(1) noise (k = 0, 250 x 100, phi in {0.3, 0.5, 0.9}, 5 seeds) the i.i.d. permutation null returned up to 20 factors (median 16 over the 15 panels) and the circular null 0-2. The one exception is pervasive ar1-0.9, where no tested rule worked: onatski was -2.4 and circular +4.8.",
+        "threshold_note": "Under serial independence E|r_1| ~ sqrt(2/(pi n)), which is 0.10 at n = 60 and 0.05 at n = 250. 0.2 is therefore well above the noise level for n >= ~40. AR(1) noise with phi = 0.5 gives mean_abs_acf1 of about 0.24 (pervasive) and 0.38 (spiked) on the grid, because factors dilute the noise autocorrelation."
+      },
+      "2_dominant_market_gap": {
+        "rule": "gap_ratio_1 = lambda_1/lambda_2 > 4 -> onatski (until 2026-11-03: mp_market)",
+        "justification": "Financial correlation matrices have one 'market' eigenvalue far above the rest. It inflates trace(S)/p and so biases the noise-variance estimate of the plain MP edge. Laloux, Cizeau, Bouchaud & Potters (1999, PRL 83(7)) and Plerou et al. (2002, PRE 65, 066126) remove the market mode before fitting the noise level, which is the mp_market rule. In the kfactors check, the market_spiked designs (market spike 100 versus 9/4/2.25; mean gap_ratio_1 = 8.7, but spike_share only 0.26) gave mean errors for mp_market of 0.00 / -0.33 / -0.78 at p = 100 / 250 / 625, against -0.33 / -0.44 / -1.44 for onatski and -1.3 / -1.1 / -1.6 for parallel. Non-market designs have a mean gap_ratio_1 of 1.0 (null) and 1.5-2.3 (others).",
+        "threshold_note": "4 lies between the non-market grid designs (<= ~2.5 on average) and the spiked-market designs (~8.7). Real daily equity correlation matrices usually show a large first-to-second eigenvalue ratio, but that statement is from the literature, not checked in this package."
+      },
+      "3_dominant_market_share": {
+        "rule": "spike_share = lambda_1/trace(S) > 0.3 -> onatski (until 2026-11-03: mp_market)",
+        "justification": "Same argument as branch 2, stated as the share of variance of the first principal component. The pervasive-market designs have spike_share = 0.36 and gap_ratio_1 = 3.2. There every tested rule except Ahn-Horenstein/Bai-Ng recovered k exactly, so this branch costs nothing on the grid and protects real panels with a strong market factor.",
+        "threshold_note": "For pure noise lambda_1/trace ~ (1 + sqrt(p/n))^2 / p, which exceeds 0.3 only for very small p (about p <= 6 at n = 100). Do not trust this branch for p below ~20."
+      },
+      "4_high_dimension": {
+        "rule": "p_over_n > 1 -> parallel(devolatilize=True) (i.i.d. permutation null)",
+        "justification": "With p > n and no serial dependence, Horn's (1965) parallel analysis with a permutation null (Buja & Eyuboglu 1992) was the most accurate rule in the pilot's spiked p > n cells: 72% / 66% exact at 60 x 100 / 60 x 200, against 50% / 32% for Onatski's ED. In the kfactors check on p > n base designs without serial dependence, its mean |error| was 0.38, against 0.75 for onatski. Under pervasive factors both are exact (pilot: 100%)."
+      },
+      "5_default": {
+        "rule": "otherwise -> onatski",
+        "justification": "Onatski's (2010, REStat 92(4)) edge-distribution estimator is consistent for p, n -> infinity under weak and strong factors, needs no noise-variance estimate, is deterministic and cheap. The pilot found it the most accurate rule overall (75% exact) and 92-100% exact for n = 250 without serial dependence. In the kfactors check on p <= n base designs without serial dependence, its mean |error| was 0.52, against 0.26 for parallel and 0.21 for mp_market. The gap comes mostly from n = 100. It stays the default because it is the package default, deterministic and free of the false positives that mp_market has on pure noise (11-22% of null panels in the check)."
+      }
+    },
+    "considered_not_used": {
+      "mean_acf1_sq": "Volatility clustering (GARCH) did not change the ranking of the rules on the grid: parallel and circular parallel were equal on the garch designs (0.94 / 0.61 exact in the pervasive / spiked regime). For independent columns, time-varying variance leaves the variance of the off-diagonal sample covariances to first order unchanged (the cross terms E[x_it x_is] E[x_jt x_js] vanish for serially uncorrelated returns), unlike autocorrelation in levels. No separate branch, but kept as a calibration feature.",
+      "mean_excess_kurtosis": "Student-t(3) noise did not change the ranking (pervasive t3: onatski 1.00 and parallel 0.94 exact). Kept as a calibration feature.",
+      "var_dispersion": "Irrelevant for rules applied to the correlation matrix (standardize=True). Kept as a calibration feature."
+    },
+    "evidence_check": "Generated with /tmp/kfactors_build/report/evidence.py (not shipped): sim.design_grid('default') (111 designs), 3 replications each (seeds 7, 1007, 2007), kmax = 10, rules onatski, bai_ng(IC_p2), ahn_horenstein(ER/GR), parallel(iid/circular, n_perm = 100), mp_market, gavish_donoho, mp(noise=mean). This is a small sanity check, not the benchmark.",
+    "evidence_summary": "Before the 2026-11-03 revisions, on the same 333 panels (all families, |k_hat - k_true| averaged over panels): this table MAE 0.85 and 61% exact; best single rule onatski MAE 0.87 and 55% exact; parallel(null=circular) 0.87 / 56%; parallel 1.16 / 56%; mp_market 1.08 / 58%; per-panel oracle (best rule chosen in hindsight) MAE 0.45. A depth-3 CART calibrated on the same data (calibrate_decision_table) reached MAE 0.80 in-sample and 1.00 leave-one-family-out, so neither the heuristic nor a small tree comes close to the oracle on this grid.",
+    "references": [
+      "Horn, J. L. (1965). A rationale and test for the number of factors in factor analysis. Psychometrika 30(2), 179-185.",
+      "Buja, A., Eyuboglu, N. (1992). Remarks on parallel analysis. Multivariate Behav. Res. 27(4), 509-540.",
+      "Laloux, L., Cizeau, P., Bouchaud, J.-P., Potters, M. (1999). Noise dressing of financial correlation matrices. Phys. Rev. Lett. 83(7), 1467-1470.",
+      "Plerou, V., Gopikrishnan, P., Rosenow, B., Amaral, L. A. N., Guhr, T., Stanley, H. E. (2002). Random matrix approach to cross correlations in financial data. Phys. Rev. E 65, 066126.",
+      "Onatski, A. (2010). Determining the number of factors from empirical distribution of eigenvalues. Rev. Econ. Stat. 92(4), 1004-1016."
+    ]
+  },
+  "tree": {
+    "feature": "mean_abs_acf1", "op": ">", "threshold": 0.2,
+    "why": "strong serial dependence: i.i.d. nulls over-count, use a null that keeps each series' autocorrelation",
+    "then": {"rule": "parallel", "kwargs": {"null": "circular", "devolatilize": true},
+             "why": "parallel analysis with independent circular shifts preserves serial dependence (Horn 1965); devolatilize removes market-wide volatility clustering, which no column-wise null preserves (branch 1 in meta)"},
+    "else": {
+      "feature": "gap_ratio_1", "op": ">", "threshold": 4.0,
+      "why": "dominant first eigenvalue (market mode)",
+      "then": {"rule": "onatski", "kwargs": {},
+               "why": "dominant market mode: Onatski (2010) needs no noise-variance estimate, so the market eigenvalue does not bias it; mp_market over-counts when betas or idiosyncratic volatilities are dispersed (branch 2 in meta)"},
+      "else": {
+        "feature": "spike_share", "op": ">", "threshold": 0.3,
+        "why": "first principal component explains a large share of variance (market mode)",
+        "then": {"rule": "onatski", "kwargs": {},
+                 "why": "dominant market mode: Onatski (2010) is unaffected by the market eigenvalue; mp_market over-counts with dispersed betas or idiosyncratic volatilities (branch 3 in meta)"},
+        "else": {
+          "feature": "p_over_n", "op": ">", "threshold": 1.0,
+          "why": "more series than observations",
+          "then": {"rule": "parallel", "kwargs": {"devolatilize": true},
+                   "why": "permutation parallel analysis was the most accurate rule for p > n in the pilot and the grid check; devolatilize removes market-wide volatility clustering (branch 4 in meta)"},
+          "else": {"rule": "onatski", "kwargs": {},
+                   "why": "default: Onatski (2010) edge-distribution estimator, consistent and deterministic"}
+        }
+      }
+    }
+  }
+}
