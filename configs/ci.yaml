@@ -1,0 +1,53 @@
+# Tiny OFFLINE benchmark for CI and tests (~2 s on a laptop, single process).
+#   python -m kfactors.bench all --config configs/ci.yaml --out /tmp/kfactors_ci
+# Every panel is synthetic (kfactors.sim), so no download happens; the real-data code path
+# (spectrum, rolling k_t, report, walk-forward k-curves, leaderboard) is fully exercised.
+name: ci
+seed: 0
+n_jobs: 1
+
+sim:
+  # inline designs (SimSpec keywords) instead of a named design_grid
+  grid:
+    - {n: 80, p: 40, k: 3, regime: pervasive, noise: gauss, name: pervasive_gauss_n80_p40}
+    - {n: 60, p: 120, k: 3, regime: spiked, strengths: [5.0, 4.0, 3.0], noise: t, df: 5.0,
+       name: spiked_t5_n60_p120}
+    - {n: 80, p: 40, k: 0, noise: gauss, name: null_gauss_n80_p40}
+  reps: 2
+  kmax: 8
+  standardize: true
+  rules:
+    - onatski
+    - bai_ng
+    - ahn_horenstein
+    - ahn_horenstein(stat=GR)
+    - mp_market
+    - gavish_donoho
+    - parallel(n_perm=20)
+  calibrate: false
+  calibrate_options: {max_depth: 2}
+
+real:
+  rules: [onatski, bai_ng, ahn_horenstein, mp_market, parallel(n_perm=20)]
+  n_boot: 200
+  alpha: 0.10
+  walkforward: {window: 60, rebalance: 3, cost_bps: 5.0, min_assets: 10, kmax: 8}
+  report: {n_boot: 10, kmax: 8, boot_n_perm: 10}
+  panels:
+    - name: synthetic_monthly
+      source: synthetic
+      args: {n: 240, p: 30, k: 3, regime: pervasive, noise: t, df: 5.0,
+             premia: [0.25, 0.2, 0.15], freq: M, start: "2000-01-31",
+             late_assets: 4, late_rows: 100}
+      rolling: {step: 6}
+      experiments:
+        - name: tangency_w60
+          strategy: kfactors.strategies.sdf:TangencyPCA
+          metric: sharpe_net
+          k_grid: "0..6"
+        # card A (teammate): skipped with a message until MinVariance.weights is implemented
+        - name: minvar_w60
+          strategy: kfactors.strategies.minvar:MinVariance
+          strategy_kwargs: {residual: diag}
+          metric: neg_vol
+          k_grid: "0..4"

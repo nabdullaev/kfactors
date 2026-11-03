@@ -1,0 +1,132 @@
+# Full kfactors benchmark (proposal configuration).
+#   python -m kfactors.bench all --config configs/default.yaml --out results/ --n-jobs 8
+# Keys are documented in the kfactors.bench module docstring. The real-data part downloads
+# public data on the first run (JKP ~3 MB, Ken French ~16 MB, Binance ~19k monthly kline files:
+# first Binance run 10-30 min, then cached under $KFACTORS_DATA or ~/.cache/kfactors).
+name: default
+seed: 0
+n_jobs: 1            # override with --n-jobs
+
+# ------------------------------------------------------------------------------------------
+# Simulations: rule accuracy on designs with a known number of factors
+# ------------------------------------------------------------------------------------------
+sim:
+  grid: default      # kfactors.sim.design_grid("default"): 111 designs in 5 families
+  reps: 20           # replications per design (--reps)
+  kmax: 10
+  standardize: true  # correlation matrix, as in the real-data runs
+  rules:             # every registered rule plus the main option variants
+    - onatski
+    - bai_ng                      # IC_p2
+    - bai_ng(criterion=IC_p1)
+    - bai_ng(criterion=PC_p1)
+    - ahn_horenstein              # ER
+    - ahn_horenstein(stat=GR)
+    - parallel                    # iid permutation null
+    - parallel(null=circular)
+    - parallel(null=block)        # block length ceil(sqrt(n)) since 2026-11-03 (was n^(1/3))
+    - parallel(devolatilize=true)               # report() routes p > n here
+    - parallel(devolatilize=true, null=circular) # report() routes serial dependence here
+    - gavish_donoho
+    - mp_market
+    - mp                          # noise=mean (the default since 2026-11-03)
+    - mp(noise=median)            # iterated median matching (opt-in; over-counts on return-like noise)
+    - kaiser
+    - variance_share
+  calibrate: false   # --calibrate learns results/sim/decision_table.json
+  calibrate_options: {max_depth: 3, min_samples_leaf: 5}
+
+# ------------------------------------------------------------------------------------------
+# Real data: spectra, rolling k_t, report() and economic k-curves
+# ------------------------------------------------------------------------------------------
+real:
+  rules: all         # every registered rule with its default options
+  n_boot: 1000       # stationary-bootstrap draws for the k-curve intervals / oracle set
+  alpha: 0.10        # oracle set covers >= 90% of the bootstrap argmax draws
+  walkforward:       # defaults of kfactors.engine.WalkForwardConfig for every panel
+    lag: 0
+    standardize: true
+    kmax: 20         # rules are capped at 20 even when the k grid goes further
+  report: {n_boot: 200, kmax: 20}
+  panels:
+    # JKP global factor data, US, monthly, 153 long-short factors (complete from 1971-11).
+    # Factor-zoo SDF: tangency portfolio of the first k PCs (Kozak-Nagel-Santosh style).
+    - name: jkp_usa_monthly
+      source: jkp
+      args: {region: usa, freq: monthly, weighting: vw_cap, start: "1971-11-30"}
+      walkforward:
+        window: 240
+        rebalance: 1
+        cost_bps: 0.0          # gross: factor returns are already portfolio returns
+        min_assets: 100
+        start: "1992-01-01"    # same out-of-sample period for both windows
+        kmax: 40               # rules may pick up to the top of the k grid (was capped at 20)
+      rolling: {step: 12, kmax: 40}
+      report: {kmax: 40}
+      experiments:
+        - name: tangency_w240
+          strategy: kfactors.strategies.sdf:TangencyPCA
+          metric: sharpe_net
+          k_grid: "1..40"
+        - name: tangency_w120
+          strategy: kfactors.strategies.sdf:TangencyPCA
+          metric: sharpe_net
+          k_grid: "1..40"
+          walkforward: {window: 120}
+        # cost robustness: 10 bps per unit of turnover across factor weights (turnover rises with k)
+        - name: tangency_w240_cost10
+          strategy: kfactors.strategies.sdf:TangencyPCA
+          metric: sharpe_net
+          k_grid: "1..40"
+          walkforward: {cost_bps: 10.0}
+        - name: tangency_w120_cost10
+          strategy: kfactors.strategies.sdf:TangencyPCA
+          metric: sharpe_net
+          k_grid: "1..40"
+          walkforward: {window: 120, cost_bps: 10.0}
+
+    # Binance spot top-100 by trailing median quote volume, daily close-to-close (365 / yr).
+    # Avellaneda-Lee residual stat-arb (card B): skipped until ResidualReversion is implemented.
+    - name: binance_top100
+      source: binance
+      args: {top: 100, start: "2022-01-01", end: "2025-12-31", history_start: "2021-06-01",
+             n_jobs: 32}
+      walkforward:
+        window: 90
+        rebalance: 1
+        cost_bps: 10.0
+        min_assets: 30
+        start: "2022-01-01"
+        lag: 1                 # conservative for a 24/7 market (lag 0 trades at the signal close)
+      rolling: {step: 7}
+      experiments:
+        - name: statarb_w90
+          strategy: kfactors.strategies.statarb:ResidualReversion
+          strategy_kwargs: {estimation_window: 60}
+          metric: sharpe_net
+          k_grid: "0..15"
+        - name: statarb_w60
+          strategy: kfactors.strategies.statarb:ResidualReversion
+          strategy_kwargs: {estimation_window: 60}
+          metric: sharpe_net
+          k_grid: "0..15"
+          walkforward: {window: 60}
+
+    # Ken French 100 size x book-to-market portfolios, daily, value weighted. Whole formation
+    # years are missing for some portfolios, so the universe varies window by window.
+    # Minimum-variance risk evaluator (card A): skipped until MinVariance is implemented.
+    - name: french_100_daily
+      source: french
+      args: {dataset: 100_size_bm, freq: daily, weighting: vw, start: "1963-07-01"}
+      walkforward:
+        window: 126
+        rebalance: 21
+        cost_bps: 0.0
+        min_assets: 50
+      rolling: {step: 21}
+      experiments:
+        - name: minvar_w126
+          strategy: kfactors.strategies.minvar:MinVariance
+          strategy_kwargs: {residual: diag}
+          metric: neg_vol
+          k_grid: "0..20"
