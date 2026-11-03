@@ -1,0 +1,9 @@
+panel,step,status,seconds,message
+jkp_usa_monthly,load,ok,0.101,
+jkp_usa_monthly,spectrum,ok,0.289,
+jkp_usa_monthly,rolling_k,ok,2.171,
+jkp_usa_monthly,report,ok,11.408,
+jkp_usa_monthly,kcurve:tangency_w240,ok,25.057,
+jkp_usa_monthly,kcurve:tangency_w120,ok,17.5,
+jkp_usa_monthly,kcurve:tangency_w240_cost10,ok,24.807,
+jkp_usa_monthly,kcurve:tangency_w120_cost10,ok,16.695,

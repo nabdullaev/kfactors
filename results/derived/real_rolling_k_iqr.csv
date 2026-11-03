@@ -1,0 +1,46 @@
+panel,source,rule,n_windows,median,q25,q75,iqr,min,max,mean
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",ahn_horenstein,34,1.0,1.0,1.0,0.0,1.0,2.0,1.1470588235294117
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",bai_ng,34,20.0,20.0,20.0,0.0,18.0,20.0,19.91176470588235
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",gavish_donoho,34,20.0,20.0,20.0,0.0,20.0,20.0,20.0
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",kaiser,34,18.0,17.0,20.0,3.0,16.0,20.0,18.205882352941178
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",mp,34,7.0,7.0,7.75,0.75,6.0,9.0,7.294117647058823
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",mp_market,34,11.5,11.0,12.0,1.0,9.0,13.0,11.264705882352942
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",onatski,34,2.0,1.0,4.0,3.0,1.0,7.0,2.9411764705882355
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",parallel,34,8.0,8.0,9.0,1.0,7.0,11.0,8.5
+jkp_usa_monthly,"rolling_k.csv (window 240, step 12)",variance_share,34,18.0,18.0,20.0,2.0,17.0,20.0,18.647058823529413
+french_100_daily,"rolling_k.csv (window 126, step 21)",ahn_horenstein,753,1.0,1.0,1.0,0.0,1.0,2.0,1.00398406374502
+french_100_daily,"rolling_k.csv (window 126, step 21)",bai_ng,753,3.0,2.0,3.0,1.0,1.0,7.0,2.731739707835325
+french_100_daily,"rolling_k.csv (window 126, step 21)",gavish_donoho,753,5.0,3.0,8.0,5.0,1.0,16.0,5.730411686586986
+french_100_daily,"rolling_k.csv (window 126, step 21)",kaiser,753,6.0,4.0,10.0,6.0,2.0,20.0,7.768924302788845
+french_100_daily,"rolling_k.csv (window 126, step 21)",mp,753,2.0,1.0,2.0,1.0,1.0,4.0,1.701195219123506
+french_100_daily,"rolling_k.csv (window 126, step 21)",mp_market,753,5.0,4.0,5.0,1.0,2.0,7.0,4.632138114209828
+french_100_daily,"rolling_k.csv (window 126, step 21)",onatski,753,3.0,2.0,3.0,1.0,1.0,8.0,2.7861885790172645
+french_100_daily,"rolling_k.csv (window 126, step 21)",parallel,753,2.0,1.0,2.0,1.0,1.0,4.0,1.8260292164674634
+french_100_daily,"rolling_k.csv (window 126, step 21)",variance_share,753,20.0,14.0,20.0,6.0,1.0,20.0,16.204515272244358
+binance_top100,"rolling_k.csv (window 90, step 7)",ahn_horenstein,209,1.0,1.0,1.0,0.0,1.0,1.0,1.0
+binance_top100,"rolling_k.csv (window 90, step 7)",bai_ng,209,1.0,1.0,1.0,0.0,1.0,4.0,1.2679425837320575
+binance_top100,"rolling_k.csv (window 90, step 7)",gavish_donoho,209,7.0,6.0,9.0,3.0,2.0,14.0,7.45933014354067
+binance_top100,"rolling_k.csv (window 90, step 7)",kaiser,209,14.0,12.0,17.0,5.0,8.0,20.0,14.301435406698564
+binance_top100,"rolling_k.csv (window 90, step 7)",mp,209,1.0,1.0,1.0,0.0,1.0,3.0,1.186602870813397
+binance_top100,"rolling_k.csv (window 90, step 7)",mp_market,209,6.0,5.0,6.0,1.0,4.0,7.0,5.5311004784688995
+binance_top100,"rolling_k.csv (window 90, step 7)",onatski,209,1.0,1.0,1.0,0.0,1.0,6.0,1.3444976076555024
+binance_top100,"rolling_k.csv (window 90, step 7)",parallel,209,1.0,1.0,1.0,0.0,1.0,4.0,1.3157894736842106
+binance_top100,"rolling_k.csv (window 90, step 7)",variance_share,209,20.0,20.0,20.0,0.0,15.0,20.0,19.827751196172247
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),ahn_horenstein,407,1.0,1.0,1.0,0.0,1.0,2.0,1.1646191646191646
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),bai_ng,407,20.0,20.0,20.0,0.0,18.0,20.0,19.96068796068796
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),gavish_donoho,407,20.0,20.0,20.0,0.0,20.0,20.0,20.0
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),kaiser,407,18.0,17.0,20.0,3.0,16.0,20.0,18.23095823095823
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),mp,407,7.0,7.0,7.0,0.0,6.0,9.0,7.287469287469287
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),mp_market,407,11.0,11.0,12.0,1.0,9.0,13.0,11.164619164619165
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),onatski,407,2.0,1.0,4.0,3.0,1.0,7.0,2.847665847665848
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),parallel,407,8.0,8.0,9.0,1.0,7.0,11.0,8.518427518427519
+jkp_usa_monthly,experiments/tangency_w240/k_used.csv (monthly decisions),variance_share,407,18.0,18.0,20.0,2.0,17.0,20.0,18.643734643734643
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),ahn_horenstein,407,1.0,1.0,2.0,1.0,1.0,2.0,1.4545454545454546
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),bai_ng,407,17.0,14.0,20.0,6.0,11.0,20.0,16.83783783783784
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),gavish_donoho,407,20.0,20.0,20.0,0.0,20.0,20.0,20.0
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),kaiser,407,18.0,16.0,19.0,3.0,15.0,20.0,17.894348894348894
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),mp,407,6.0,5.0,6.0,1.0,4.0,7.0,5.680589680589681
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),mp_market,407,8.0,8.0,9.0,1.0,7.0,9.0,8.265356265356266
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),onatski,407,2.0,1.0,4.0,3.0,1.0,11.0,2.6068796068796067
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),parallel,407,7.0,6.0,7.0,1.0,5.0,9.0,6.648648648648648
+jkp_usa_monthly,experiments/tangency_w120/k_used.csv (monthly decisions),variance_share,407,18.0,13.0,19.0,6.0,13.0,20.0,17.078624078624077

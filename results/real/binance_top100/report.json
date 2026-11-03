@@ -1,0 +1,74 @@
+{
+  "window_start": "2025-10-03",
+  "window_end": "2025-12-31",
+  "n": 90,
+  "p": 92,
+  "diagnostics": {
+    "n": 90,
+    "p": 92,
+    "p_over_n": 1.0222222222222221,
+    "standardize": true,
+    "spike_share": 0.628243824611559,
+    "top_gap_ratios": [
+      18.43095244793065,
+      1.2914478094209434,
+      1.3536587132015685,
+      1.057846757425398,
+      1.092256971654884
+    ],
+    "gap_ratio_1": 18.43095244793065,
+    "max_gap_ratio": 18.43095244793065,
+    "argmax_gap_ratio": 1,
+    "mean_excess_kurtosis": 6.804573409619899,
+    "median_excess_kurtosis": 5.129506140029365,
+    "mean_acf1": 0.027556885495346736,
+    "mean_abs_acf1": 0.06727607428189672,
+    "mean_acf1_sq": 0.04007455838583584,
+    "var_dispersion": 1.6528088036181918
+  },
+  "recommended": {
+    "rule": "onatski",
+    "kwargs": {},
+    "label": "onatski",
+    "reason": "mean_abs_acf1 = 0.06728 <= 0.2; gap_ratio_1 = 18.43 > 4 [dominant first eigenvalue (market mode)] -> onatski: dominant market mode: Onatski (2010) needs no noise-variance estimate, so the market eigenvalue does not bias it; mp_market over-counts when betas or idiosyncratic volatilities are dispersed (branch 2 in meta)",
+    "path": [
+      {
+        "feature": "mean_abs_acf1",
+        "value": 0.06727607428189672,
+        "op": ">",
+        "threshold": 0.2,
+        "taken": "else"
+      },
+      {
+        "feature": "gap_ratio_1",
+        "value": 18.43095244793065,
+        "op": ">",
+        "threshold": 4.0,
+        "taken": "then"
+      }
+    ],
+    "table_kind": "heuristic",
+    "k": 3,
+    "k_boot_median": 2.0,
+    "k_boot_p_same": 0.255,
+    "k_distribution": {
+      "1": 0.425,
+      "2": 0.305,
+      "3": 0.255,
+      "5": 0.005,
+      "6": 0.005,
+      "10": 0.005
+    }
+  },
+  "info": {
+    "n_boot": 200,
+    "mean_block": 4.481404746557164,
+    "kmax": 20,
+    "kmax_effective": 20,
+    "standardize": true,
+    "boot_n_perm": 20,
+    "boot_unique_rows": true,
+    "boot_mean_rows": 57.49,
+    "random_state": 2598520194
+  }
+}

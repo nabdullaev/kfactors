@@ -1,0 +1,20 @@
+family_noise,n_panels,best_by_exact,best_exact_pct,best_by_mae,best_mae,onatski_exact_pct,onatski_mae
+market/gauss,120,mp_market,90.8,mp_market,0.092,77.5,0.25
+market/hetero,120,mp_market,69.2,mp_market,0.333,55.8,0.625
+market/t3,120,mp_market,95.0,mp_market,0.05,82.5,0.225
+null/garch,60,8 rules tie,100.0,8 rules tie,0.0,100.0,0.0
+null/gauss,60,6 rules tie,100.0,6 rules tie,0.0,96.7,0.083
+null/t3,60,8 rules tie,100.0,8 rules tie,0.0,98.3,0.017
+pervasive/ar1-0.5,120,bai_ng(criterion=IC_p1),90.0,bai_ng(criterion=IC_p1),0.1,84.2,0.275
+pervasive/ar1-0.9,120,mp,13.3,onatski,1.95,5.8,1.95
+pervasive/garch,120,mp_market,100.0,mp_market,0.0,96.7,0.042
+pervasive/gauss,120,gavish_donoho,98.3,gavish_donoho,0.017,95.0,0.058
+pervasive/hetero,120,mp_market,90.0,mp_market,0.108,85.0,0.267
+pervasive/t3,120,gavish_donoho,97.5,gavish_donoho,0.025,91.7,0.092
+spiked/ar1-0.5,120,"parallel(devolatilize=true, null=circular)",39.2,"parallel(devolatilize=true, null=circular)",1.025,7.5,1.833
+spiked/ar1-0.9,120,mp,9.2,ahn_horenstein(stat=GR),3.308,0.0,3.5
+spiked/garch,120,parallel(devolatilize=true) | parallel(null=block),65.8,parallel(devolatilize=true),0.342,46.7,0.717
+spiked/gauss,120,parallel(devolatilize=true),66.7,parallel(devolatilize=true),0.342,45.0,0.758
+spiked/hetero,120,mp(noise=median),41.7,mp(noise=median),0.658,14.2,1.425
+spiked/t3,120,mp_market,71.7,mp_market,0.283,55.8,0.558
+weak/gauss,240,mp(noise=median),48.3,mp(noise=median),0.558,16.2,0.867

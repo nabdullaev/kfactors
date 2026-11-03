@@ -1,0 +1,86 @@
+{
+  "window_start": "2006-01-31",
+  "window_end": "2025-12-31",
+  "n": 240,
+  "p": 153,
+  "diagnostics": {
+    "n": 240,
+    "p": 153,
+    "p_over_n": 0.6375,
+    "standardize": true,
+    "spike_share": 0.2814238640734227,
+    "top_gap_ratios": [
+      1.2484812301828496,
+      3.0909964952805993,
+      1.4355557682726472,
+      1.1634476445390496,
+      1.169624511735264
+    ],
+    "gap_ratio_1": 1.2484812301828496,
+    "max_gap_ratio": 3.0909964952805993,
+    "argmax_gap_ratio": 2,
+    "mean_excess_kurtosis": 2.306975621050209,
+    "median_excess_kurtosis": 2.0128916715021283,
+    "mean_acf1": 0.08399325843746953,
+    "mean_abs_acf1": 0.09320243810737328,
+    "mean_acf1_sq": 0.15137424126822485,
+    "var_dispersion": 0.7769564584888204
+  },
+  "recommended": {
+    "rule": "onatski",
+    "kwargs": {},
+    "label": "onatski",
+    "reason": "mean_abs_acf1 = 0.0932 <= 0.2; gap_ratio_1 = 1.248 <= 4; spike_share = 0.2814 <= 0.3; p_over_n = 0.6375 <= 1 -> onatski: default: Onatski (2010) edge-distribution estimator, consistent and deterministic",
+    "path": [
+      {
+        "feature": "mean_abs_acf1",
+        "value": 0.09320243810737328,
+        "op": ">",
+        "threshold": 0.2,
+        "taken": "else"
+      },
+      {
+        "feature": "gap_ratio_1",
+        "value": 1.2484812301828496,
+        "op": ">",
+        "threshold": 4.0,
+        "taken": "else"
+      },
+      {
+        "feature": "spike_share",
+        "value": 0.2814238640734227,
+        "op": ">",
+        "threshold": 0.3,
+        "taken": "else"
+      },
+      {
+        "feature": "p_over_n",
+        "value": 0.6375,
+        "op": ">",
+        "threshold": 1.0,
+        "taken": "else"
+      }
+    ],
+    "table_kind": "heuristic",
+    "k": 2,
+    "k_boot_median": 2.0,
+    "k_boot_p_same": 0.75,
+    "k_distribution": {
+      "0": 0.005,
+      "2": 0.75,
+      "3": 0.02,
+      "6": 0.225
+    }
+  },
+  "info": {
+    "n_boot": 200,
+    "mean_block": 6.214465011907717,
+    "kmax": 40,
+    "kmax_effective": 40,
+    "standardize": true,
+    "boot_n_perm": 20,
+    "boot_unique_rows": true,
+    "boot_mean_rows": 152.515,
+    "random_state": 3413808113
+  }
+}

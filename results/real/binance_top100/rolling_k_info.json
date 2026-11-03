@@ -1,0 +1,22 @@
+{
+  "window": 90,
+  "step": 7,
+  "start": "2022-01-01",
+  "end": null,
+  "min_assets": 30,
+  "kmax": 20,
+  "standardize": true,
+  "rules": [
+    "ahn_horenstein",
+    "bai_ng",
+    "gavish_donoho",
+    "kaiser",
+    "mp",
+    "mp_market",
+    "onatski",
+    "parallel",
+    "variance_share"
+  ],
+  "warnings": {},
+  "errors": {}
+}

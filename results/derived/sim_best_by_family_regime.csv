@@ -1,0 +1,7 @@
+family_regime,n_panels,best_by_exact,best_exact_pct,best_by_mae,best_mae,onatski_exact_pct,onatski_mae
+market/pervasive,180,6 rules tie,100.0,6 rules tie,0.0,97.8,0.039
+market/spiked,180,mp_market,70.0,mp_market,0.317,46.1,0.694
+null/pervasive,180,6 rules tie,100.0,6 rules tie,0.0,98.3,0.033
+pervasive/pervasive,720,onatski,76.4,onatski,0.447,76.4,0.447
+spiked/spiked,720,"parallel(devolatilize=true, null=circular)",45.7,parallel(null=circular),1.074,28.2,1.465
+weak/spiked,240,mp(noise=median),48.3,mp(noise=median),0.558,16.2,0.867

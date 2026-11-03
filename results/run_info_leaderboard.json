@@ -1,0 +1,7 @@
+{
+  "command": "leaderboard",
+  "config": "configs/default.yaml",
+  "seconds": 0.372,
+  "n_failed": 0,
+  "kfactors_version": "0.1.0a1"
+}

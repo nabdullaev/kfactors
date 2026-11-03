@@ -1,0 +1,22 @@
+{
+  "window": 240,
+  "step": 12,
+  "start": "1992-01-01",
+  "end": null,
+  "min_assets": 100,
+  "kmax": 40,
+  "standardize": true,
+  "rules": [
+    "ahn_horenstein",
+    "bai_ng",
+    "gavish_donoho",
+    "kaiser",
+    "mp",
+    "mp_market",
+    "onatski",
+    "parallel",
+    "variance_share"
+  ],
+  "warnings": {},
+  "errors": {}
+}

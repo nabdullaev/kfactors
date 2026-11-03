@@ -1,0 +1,7 @@
+noise,n_panels,best_by_exact,best_exact_pct,best_by_mae,best_mae,onatski_exact_pct,onatski_mae
+ar1-0.5,240,"parallel(devolatilize=true, null=circular)",62.9,"parallel(devolatilize=true, null=circular)",0.579,45.8,1.054
+ar1-0.9,240,mp,11.2,onatski,2.725,2.9,2.725
+garch,300,mp_market | parallel(devolatilize=true),83.3,mp_market | parallel(devolatilize=true),0.167,77.3,0.303
+gauss,660,mp_market,62.1,mp_market,0.379,54.2,0.517
+hetero,360,mp_market,61.7,mp_market,0.431,51.7,0.772
+t3,420,mp_market,88.6,mp_market,0.114,79.8,0.252

@@ -1,0 +1,14 @@
+{
+  "config": "default",
+  "seed": 0,
+  "n_jobs": 8,
+  "kfactors_version": "0.1.0a1",
+  "seconds": 98.036,
+  "cache_hits": 0,
+  "cache_misses": 6,
+  "n_failed": 0,
+  "n_skipped": 0,
+  "panels": [
+    "jkp_usa_monthly"
+  ]
+}

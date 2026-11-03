@@ -1,0 +1,192 @@
+16:48:13 INFO kfactors 0.1.0a1 bench sim: config configs/default.yaml (default), out results, seed 0, n_jobs 8
+16:48:13 INFO sim: 111 designs x 20 reps x 17 rules (kmax=10, standardize=True, n_jobs=8)
+16:48:13 INFO sim: 111 designs ...
+16:53:17 INFO sim: [1/111] pervasive_gauss_n100_p40 (2.57 s, 0/20 reps cached)
+16:53:17 INFO sim: [2/111] pervasive_gauss_n100_p100 (7.64 s, 0/20 reps cached)
+16:53:17 INFO sim: [3/111] pervasive_gauss_n100_p250 (8.61 s, 0/20 reps cached)
+16:53:17 INFO sim: [4/111] pervasive_gauss_n250_p100 (8.60 s, 0/20 reps cached)
+16:53:17 INFO sim: [5/111] pervasive_gauss_n250_p250 (29.04 s, 0/20 reps cached)
+16:53:17 INFO sim: [6/111] pervasive_gauss_n250_p625 (44.29 s, 0/20 reps cached)
+16:53:17 INFO sim: [7/111] pervasive_t3_n100_p40 (2.57 s, 0/20 reps cached)
+16:53:17 INFO sim: [8/111] pervasive_t3_n100_p100 (7.64 s, 0/20 reps cached)
+16:53:17 INFO sim: [9/111] pervasive_t3_n100_p250 (8.40 s, 0/20 reps cached)
+16:53:17 INFO sim: [10/111] pervasive_t3_n250_p100 (8.29 s, 0/20 reps cached)
+16:53:17 INFO sim: [11/111] pervasive_t3_n250_p250 (35.01 s, 0/20 reps cached)
+16:53:17 INFO sim: [12/111] pervasive_t3_n250_p625 (35.72 s, 0/20 reps cached)
+16:53:17 INFO sim: [13/111] pervasive_ar1-0.5_n100_p40 (2.37 s, 0/20 reps cached)
+16:53:17 INFO sim: [14/111] pervasive_ar1-0.5_n100_p100 (7.43 s, 0/20 reps cached)
+16:53:17 INFO sim: [15/111] pervasive_ar1-0.5_n100_p250 (8.41 s, 0/20 reps cached)
+16:53:17 INFO sim: [16/111] pervasive_ar1-0.5_n250_p100 (8.33 s, 0/20 reps cached)
+16:53:17 INFO sim: [17/111] pervasive_ar1-0.5_n250_p250 (34.89 s, 0/20 reps cached)
+16:53:17 INFO sim: [18/111] pervasive_ar1-0.5_n250_p625 (44.46 s, 0/20 reps cached)
+16:53:17 INFO sim: [19/111] pervasive_ar1-0.9_n100_p40 (2.34 s, 0/20 reps cached)
+16:53:17 INFO sim: [20/111] pervasive_ar1-0.9_n100_p100 (7.42 s, 0/20 reps cached)
+16:53:17 INFO sim: [21/111] pervasive_ar1-0.9_n100_p250 (8.41 s, 0/20 reps cached)
+16:53:17 INFO sim: [22/111] pervasive_ar1-0.9_n250_p100 (8.30 s, 0/20 reps cached)
+16:53:17 INFO sim: [23/111] pervasive_ar1-0.9_n250_p250 (31.99 s, 0/20 reps cached)
+16:53:17 INFO sim: [24/111] pervasive_ar1-0.9_n250_p625 (38.21 s, 0/20 reps cached)
+16:53:17 INFO sim: [25/111] pervasive_garch_n100_p40 (2.33 s, 0/20 reps cached)
+16:53:17 INFO sim: [26/111] pervasive_garch_n100_p100 (7.36 s, 0/20 reps cached)
+16:53:17 INFO sim: [27/111] pervasive_garch_n100_p250 (8.47 s, 0/20 reps cached)
+16:53:17 INFO sim: [28/111] pervasive_garch_n250_p100 (8.37 s, 0/20 reps cached)
+16:53:17 INFO sim: [29/111] pervasive_garch_n250_p250 (34.51 s, 0/20 reps cached)
+16:53:17 INFO sim: [30/111] pervasive_garch_n250_p625 (38.12 s, 0/20 reps cached)
+16:53:17 INFO sim: [31/111] pervasive_hetero_n100_p40 (2.36 s, 0/20 reps cached)
+16:53:17 INFO sim: [32/111] pervasive_hetero_n100_p100 (7.52 s, 0/20 reps cached)
+16:53:17 INFO sim: [33/111] pervasive_hetero_n100_p250 (8.42 s, 0/20 reps cached)
+16:53:17 INFO sim: [34/111] pervasive_hetero_n250_p100 (8.31 s, 0/20 reps cached)
+16:53:17 INFO sim: [35/111] pervasive_hetero_n250_p250 (36.47 s, 0/20 reps cached)
+16:53:17 INFO sim: [36/111] pervasive_hetero_n250_p625 (42.21 s, 0/20 reps cached)
+16:53:17 INFO sim: [37/111] spiked_gauss_n100_p40 (2.34 s, 0/20 reps cached)
+16:53:17 INFO sim: [38/111] spiked_gauss_n100_p100 (7.58 s, 0/20 reps cached)
+16:53:17 INFO sim: [39/111] spiked_gauss_n100_p250 (8.41 s, 0/20 reps cached)
+16:53:17 INFO sim: [40/111] spiked_gauss_n250_p100 (8.31 s, 0/20 reps cached)
+16:53:17 INFO sim: [41/111] spiked_gauss_n250_p250 (38.25 s, 0/20 reps cached)
+16:53:17 INFO sim: [42/111] spiked_gauss_n250_p625 (36.02 s, 0/20 reps cached)
+16:53:17 INFO sim: [43/111] spiked_t3_n100_p40 (2.33 s, 0/20 reps cached)
+16:53:17 INFO sim: [44/111] spiked_t3_n100_p100 (7.37 s, 0/20 reps cached)
+16:53:17 INFO sim: [45/111] spiked_t3_n100_p250 (8.34 s, 0/20 reps cached)
+16:53:17 INFO sim: [46/111] spiked_t3_n250_p100 (8.24 s, 0/20 reps cached)
+16:53:17 INFO sim: [47/111] spiked_t3_n250_p250 (31.40 s, 0/20 reps cached)
+16:53:17 INFO sim: [48/111] spiked_t3_n250_p625 (40.14 s, 0/20 reps cached)
+16:53:17 INFO sim: [49/111] spiked_ar1-0.5_n100_p40 (2.34 s, 0/20 reps cached)
+16:53:17 INFO sim: [50/111] spiked_ar1-0.5_n100_p100 (7.39 s, 0/20 reps cached)
+16:53:17 INFO sim: [51/111] spiked_ar1-0.5_n100_p250 (8.38 s, 0/20 reps cached)
+16:53:17 INFO sim: [52/111] spiked_ar1-0.5_n250_p100 (8.39 s, 0/20 reps cached)
+16:53:17 INFO sim: [53/111] spiked_ar1-0.5_n250_p250 (37.45 s, 0/20 reps cached)
+16:53:17 INFO sim: [54/111] spiked_ar1-0.5_n250_p625 (40.01 s, 0/20 reps cached)
+16:53:17 INFO sim: [55/111] spiked_ar1-0.9_n100_p40 (2.38 s, 0/20 reps cached)
+16:53:17 INFO sim: [56/111] spiked_ar1-0.9_n100_p100 (7.55 s, 0/20 reps cached)
+16:53:17 INFO sim: [57/111] spiked_ar1-0.9_n100_p250 (8.67 s, 0/20 reps cached)
+16:53:17 INFO sim: [58/111] spiked_ar1-0.9_n250_p100 (8.46 s, 0/20 reps cached)
+16:53:17 INFO sim: [59/111] spiked_ar1-0.9_n250_p250 (29.11 s, 0/20 reps cached)
+16:53:17 INFO sim: [60/111] spiked_ar1-0.9_n250_p625 (40.59 s, 0/20 reps cached)
+16:53:17 INFO sim: [61/111] spiked_garch_n100_p40 (2.37 s, 0/20 reps cached)
+16:53:17 INFO sim: [62/111] spiked_garch_n100_p100 (7.48 s, 0/20 reps cached)
+16:53:17 INFO sim: [63/111] spiked_garch_n100_p250 (8.40 s, 0/20 reps cached)
+16:53:17 INFO sim: [64/111] spiked_garch_n250_p100 (8.32 s, 0/20 reps cached)
+16:53:17 INFO sim: [65/111] spiked_garch_n250_p250 (38.32 s, 0/20 reps cached)
+16:53:17 INFO sim: [66/111] spiked_garch_n250_p625 (45.55 s, 0/20 reps cached)
+16:53:17 INFO sim: [67/111] spiked_hetero_n100_p40 (2.37 s, 0/20 reps cached)
+16:53:17 INFO sim: [68/111] spiked_hetero_n100_p100 (7.42 s, 0/20 reps cached)
+16:53:17 INFO sim: [69/111] spiked_hetero_n100_p250 (8.35 s, 0/20 reps cached)
+16:53:17 INFO sim: [70/111] spiked_hetero_n250_p100 (8.26 s, 0/20 reps cached)
+16:53:17 INFO sim: [71/111] spiked_hetero_n250_p250 (31.53 s, 0/20 reps cached)
+16:53:17 INFO sim: [72/111] spiked_hetero_n250_p625 (41.91 s, 0/20 reps cached)
+16:53:17 INFO sim: [73/111] market_pervasive_gauss_n250_p100 (8.30 s, 0/20 reps cached)
+16:53:17 INFO sim: [74/111] market_pervasive_gauss_n250_p250 (28.96 s, 0/20 reps cached)
+16:53:17 INFO sim: [75/111] market_pervasive_gauss_n250_p625 (43.80 s, 0/20 reps cached)
+16:53:17 INFO sim: [76/111] market_pervasive_t3_n250_p100 (8.25 s, 0/20 reps cached)
+16:53:17 INFO sim: [77/111] market_pervasive_t3_n250_p250 (35.65 s, 0/20 reps cached)
+16:53:17 INFO sim: [78/111] market_pervasive_t3_n250_p625 (40.09 s, 0/20 reps cached)
+16:53:17 INFO sim: [79/111] market_pervasive_hetero_n250_p100 (8.83 s, 0/20 reps cached)
+16:53:17 INFO sim: [80/111] market_pervasive_hetero_n250_p250 (33.70 s, 0/20 reps cached)
+16:53:17 INFO sim: [81/111] market_pervasive_hetero_n250_p625 (45.55 s, 0/20 reps cached)
+16:53:17 INFO sim: [82/111] market_spiked_gauss_n250_p100 (8.25 s, 0/20 reps cached)
+16:53:17 INFO sim: [83/111] market_spiked_gauss_n250_p250 (28.63 s, 0/20 reps cached)
+16:53:17 INFO sim: [84/111] market_spiked_gauss_n250_p625 (43.52 s, 0/20 reps cached)
+16:53:17 INFO sim: [85/111] market_spiked_t3_n250_p100 (8.23 s, 0/20 reps cached)
+16:53:17 INFO sim: [86/111] market_spiked_t3_n250_p250 (28.56 s, 0/20 reps cached)
+16:53:17 INFO sim: [87/111] market_spiked_t3_n250_p625 (43.09 s, 0/20 reps cached)
+16:53:17 INFO sim: [88/111] market_spiked_hetero_n250_p100 (8.26 s, 0/20 reps cached)
+16:53:17 INFO sim: [89/111] market_spiked_hetero_n250_p250 (33.08 s, 0/20 reps cached)
+16:53:17 INFO sim: [90/111] market_spiked_hetero_n250_p625 (45.14 s, 0/20 reps cached)
+16:53:17 INFO sim: [91/111] weak_bbp0.5_n250_p100 (8.35 s, 0/20 reps cached)
+16:53:17 INFO sim: [92/111] weak_bbp0.5_n250_p250 (31.13 s, 0/20 reps cached)
+16:53:17 INFO sim: [93/111] weak_bbp0.5_n250_p625 (40.82 s, 0/20 reps cached)
+16:53:17 INFO sim: [94/111] weak_bbp1_n250_p100 (8.25 s, 0/20 reps cached)
+16:53:17 INFO sim: [95/111] weak_bbp1_n250_p250 (33.60 s, 0/20 reps cached)
+16:53:17 INFO sim: [96/111] weak_bbp1_n250_p625 (42.98 s, 0/20 reps cached)
+16:53:17 INFO sim: [97/111] weak_bbp1.5_n250_p100 (8.26 s, 0/20 reps cached)
+16:53:17 INFO sim: [98/111] weak_bbp1.5_n250_p250 (31.88 s, 0/20 reps cached)
+16:53:17 INFO sim: [99/111] weak_bbp1.5_n250_p625 (44.95 s, 0/20 reps cached)
+16:53:17 INFO sim: [100/111] weak_bbp2_n250_p100 (8.32 s, 0/20 reps cached)
+16:53:17 INFO sim: [101/111] weak_bbp2_n250_p250 (33.18 s, 0/20 reps cached)
+16:53:17 INFO sim: [102/111] weak_bbp2_n250_p625 (42.66 s, 0/20 reps cached)
+16:53:17 INFO sim: [103/111] null_gauss_n250_p100 (8.24 s, 0/20 reps cached)
+16:53:17 INFO sim: [104/111] null_gauss_n250_p250 (30.03 s, 0/20 reps cached)
+16:53:17 INFO sim: [105/111] null_gauss_n250_p625 (37.39 s, 0/20 reps cached)
+16:53:17 INFO sim: [106/111] null_t3_n250_p100 (8.23 s, 0/20 reps cached)
+16:53:17 INFO sim: [107/111] null_t3_n250_p250 (32.71 s, 0/20 reps cached)
+16:53:17 INFO sim: [108/111] null_t3_n250_p625 (39.63 s, 0/20 reps cached)
+16:53:17 INFO sim: [109/111] null_garch_n250_p100 (8.30 s, 0/20 reps cached)
+16:53:17 INFO sim: [110/111] null_garch_n250_p250 (31.06 s, 0/20 reps cached)
+16:53:17 INFO sim: [111/111] null_garch_n250_p625 (34.90 s, 0/20 reps cached)
+16:53:17 INFO sim: 111 designs done in 303.54 s
+16:53:17 INFO sim: 1481 rule calls emitted warnings (see raw columns n_warnings/warning)
+16:53:17 INFO pyarrow not installed: raw results written as CSV only
+16:53:17 INFO sim: heatmaps ...
+16:53:18 INFO sim: heatmaps done in 0.85 s
+16:53:19 INFO sim: calibrated decision table: train acc 0.718, LOFO acc 0.6391891891891892, MAE tree 0.746 vs best single rule onatski 0.776
+16:53:19 INFO leaderboard: 238 rows -> results/leaderboard.csv
+16:53:19 INFO finished in 305.9 s; leaderboard: results/leaderboard.md
+16:55:38 INFO kfactors 0.1.0a1 bench real: config configs/default.yaml (default), out results, seed 0, n_jobs 8
+16:55:38 INFO [jkp_usa_monthly] load ...
+16:55:38 INFO [jkp_usa_monthly] load done in 0.12 s
+16:55:38 INFO [jkp_usa_monthly] 650 rows x 153 assets, 1971-11-30 .. 2025-12-31, freq M (fingerprint b8bf7111882b458def72)
+16:55:38 INFO [jkp_usa_monthly] spectrum ...
+16:55:38 INFO [jkp_usa_monthly] spectrum done in 0.31 s
+16:55:38 INFO [jkp_usa_monthly] rolling_k ...
+16:55:40 INFO [jkp_usa_monthly] rolling_k done in 1.66 s
+16:55:40 INFO [jkp_usa_monthly] report ...
+16:55:48 INFO [jkp_usa_monthly] report done in 7.55 s
+16:55:48 INFO [jkp_usa_monthly] kcurve:tangency_w240 (kfactors.strategies.sdf:TangencyPCA, 40 k values + 9 rules) ...
+16:55:58 INFO     rule choices for 9 rules precomputed in 10.73 s
+16:56:08 INFO [jkp_usa_monthly] kcurve:tangency_w240 done in 19.86 s: oracle k=38, set=[23, 27, 29, 30, 31, 36, 38, 40]
+16:56:08 INFO [jkp_usa_monthly] kcurve:tangency_w120 (kfactors.strategies.sdf:TangencyPCA, 40 k values + 9 rules) ...
+16:56:15 INFO     rule choices for 9 rules precomputed in 7.27 s
+16:56:20 INFO [jkp_usa_monthly] kcurve:tangency_w120 done in 12.75 s: oracle k=33, set=[18, 19, 26, 32, 33, 36, 40]
+16:56:20 INFO [binance_top100] load ...
+16:56:23 INFO [binance_top100] load done in 2.90 s
+16:56:23 INFO [binance_top100] 1675 rows x 560 assets, 2021-06-01 .. 2025-12-31, freq D (fingerprint af0dabbb46884f18f0e2)
+16:56:23 INFO [binance_top100] spectrum ...
+16:56:23 INFO [binance_top100] spectrum done in 0.07 s
+16:56:23 INFO [binance_top100] rolling_k ...
+16:56:26 INFO [binance_top100] rolling_k done in 2.81 s
+16:56:26 INFO [binance_top100] report ...
+16:56:28 INFO [binance_top100] report done in 2.31 s
+16:56:28 INFO [binance_top100] kcurve:statarb_w90 (kfactors.strategies.statarb:ResidualReversion, 16 k values + 9 rules) ...
+16:56:28 WARNING [binance_top100] kcurve:statarb_w90 SKIPPED: strategy kfactors.strategies.statarb:ResidualReversion is not implemented yet (NotImplementedError: Card B: ResidualReversion.weights is not implemented yet (see docs/tasks/card_B_statarb.md)); experiment skipped
+16:56:28 INFO [binance_top100] kcurve:statarb_w60 (kfactors.strategies.statarb:ResidualReversion, 16 k values + 9 rules) ...
+16:56:28 WARNING [binance_top100] kcurve:statarb_w60 SKIPPED: strategy kfactors.strategies.statarb:ResidualReversion is not implemented yet (NotImplementedError: Card B: ResidualReversion.weights is not implemented yet (see docs/tasks/card_B_statarb.md)); experiment skipped
+16:56:28 INFO [french_100_daily] load ...
+16:56:29 INFO [french_100_daily] load done in 0.71 s
+16:56:29 INFO [french_100_daily] 15918 rows x 100 assets, 1963-07-01 .. 2026-09-30, freq D (fingerprint a431e5887d7112a1484e)
+16:56:29 INFO [french_100_daily] spectrum ...
+16:56:29 INFO [french_100_daily] spectrum done in 0.06 s
+16:56:29 INFO [french_100_daily] rolling_k ...
+16:56:40 INFO [french_100_daily] rolling_k done in 10.73 s
+16:56:40 INFO [french_100_daily] report ...
+16:56:44 INFO [french_100_daily] report done in 3.55 s
+16:56:44 INFO [french_100_daily] kcurve:minvar_w126 (kfactors.strategies.minvar:MinVariance, 21 k values + 9 rules) ...
+16:56:44 WARNING [french_100_daily] kcurve:minvar_w126 SKIPPED: strategy kfactors.strategies.minvar:MinVariance is not implemented yet (NotImplementedError: Card A: MinVariance.weights is not implemented yet (see docs/tasks/card_A_minvar.md)); experiment skipped
+16:56:44 WARNING 3 experiment(s) skipped: strategy not implemented yet
+16:56:44 INFO leaderboard: 268 rows -> results/leaderboard.csv
+16:56:44 INFO finished in 66.1 s; leaderboard: results/leaderboard.md
+16:57:02 INFO kfactors 0.1.0a1 bench leaderboard: config configs/default.yaml (default), out results, seed 0, n_jobs 1
+16:57:02 INFO leaderboard: 268 rows -> results/leaderboard.csv
+16:57:02 INFO finished in 0.4 s; leaderboard: results/leaderboard.md
+17:36:58 INFO kfactors 0.1.0a1 bench real: config configs/default.yaml (default), out results, seed 0, n_jobs 8
+17:36:58 INFO [jkp_usa_monthly] load ...
+17:36:58 INFO [jkp_usa_monthly] load done in 0.10 s
+17:36:58 INFO [jkp_usa_monthly] 650 rows x 153 assets, 1971-11-30 .. 2025-12-31, freq M (fingerprint b8bf7111882b458def72)
+17:36:58 INFO [jkp_usa_monthly] spectrum ...
+17:36:58 INFO [jkp_usa_monthly] spectrum done in 0.29 s
+17:36:58 INFO [jkp_usa_monthly] rolling_k ...
+17:37:00 INFO [jkp_usa_monthly] rolling_k done in 2.17 s
+17:37:00 INFO [jkp_usa_monthly] report ...
+17:37:12 INFO [jkp_usa_monthly] report done in 11.41 s
+17:37:12 INFO [jkp_usa_monthly] kcurve:tangency_w240 (kfactors.strategies.sdf:TangencyPCA, 40 k values + 9 rules) ...
+17:37:28 INFO     rule choices for 9 rules precomputed in 15.77 s
+17:37:37 INFO [jkp_usa_monthly] kcurve:tangency_w240 done in 25.06 s: oracle k=38, set=[23, 27, 29, 30, 31, 36, 38, 40]
+17:37:37 INFO [jkp_usa_monthly] kcurve:tangency_w120 (kfactors.strategies.sdf:TangencyPCA, 40 k values + 9 rules) ...
+17:37:49 INFO     rule choices for 9 rules precomputed in 11.69 s
+17:37:54 INFO [jkp_usa_monthly] kcurve:tangency_w120 done in 17.50 s: oracle k=33, set=[18, 19, 26, 32, 33, 36, 40]
+17:37:54 INFO [jkp_usa_monthly] kcurve:tangency_w240_cost10 (kfactors.strategies.sdf:TangencyPCA, 40 k values + 9 rules) ...
+17:38:10 INFO     rule choices for 9 rules precomputed in 15.84 s
+17:38:19 INFO [jkp_usa_monthly] kcurve:tangency_w240_cost10 done in 24.81 s: oracle k=38, set=[17, 23, 28, 29, 30, 31, 36, 38, 40]
+17:38:19 INFO [jkp_usa_monthly] kcurve:tangency_w120_cost10 (kfactors.strategies.sdf:TangencyPCA, 40 k values + 9 rules) ...
+17:38:31 INFO     rule choices for 9 rules precomputed in 11.42 s
+17:38:36 INFO [jkp_usa_monthly] kcurve:tangency_w120_cost10 done in 16.70 s: oracle k=18, set=[13, 14, 15, 17, 18, 19, 26, 32, 33, 36]
+17:38:36 INFO leaderboard: 286 rows -> results/leaderboard.csv
+17:38:36 INFO finished in 98.4 s; leaderboard: results/leaderboard.md

@@ -1,0 +1,3 @@
+regime,n_panels,best_by_exact,best_exact_pct,best_by_mae,best_mae,onatski_exact_pct,onatski_mae
+pervasive,1080,onatski,83.6,onatski,0.31,83.6,0.31
+spiked,1140,mp_market,41.0,"parallel(devolatilize=true, null=circular)",1.027,28.5,1.218

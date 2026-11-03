@@ -1,0 +1,41 @@
+{
+  "config": "default",
+  "seed": 0,
+  "reps": 20,
+  "n_designs": 111,
+  "rules": [
+    "onatski",
+    "bai_ng",
+    "bai_ng(criterion=IC_p1)",
+    "bai_ng(criterion=PC_p1)",
+    "ahn_horenstein",
+    "ahn_horenstein(stat=GR)",
+    "parallel",
+    "parallel(null=circular)",
+    "parallel(null=block)",
+    "parallel(devolatilize=true)",
+    "parallel(devolatilize=true, null=circular)",
+    "gavish_donoho",
+    "mp_market",
+    "mp",
+    "mp(noise=median)",
+    "kaiser",
+    "variance_share"
+  ],
+  "kmax": 10,
+  "standardize": true,
+  "n_rows": 37740,
+  "n_failed": 0,
+  "kfactors_version": "0.1.0a1",
+  "seconds": 305.516,
+  "steps": [
+    {
+      "step": "sim: 111 designs",
+      "seconds": 303.5404
+    },
+    {
+      "step": "sim: heatmaps",
+      "seconds": 0.8511
+    }
+  ]
+}

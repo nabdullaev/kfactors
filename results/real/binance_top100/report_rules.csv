@@ -1,0 +1,10 @@
+rule,rule,kwargs,k,boot_median,boot_mode,boot_q05,boot_q95,boot_p_same,n_boot_ok,n_boot_failed,n_boot_warnings,threshold,converged,degenerate,recommended
+ahn_horenstein,ahn_horenstein,,1,1.0,1,1.0,1.0,1.0,200,0,0,,,False,False
+bai_ng,bai_ng,,1,1.0,1,1.0,2.0,0.68,200,0,0,,,False,False
+gavish_donoho,gavish_donoho,,13,6.0,6,3.0,8.0,0.0,200,0,0,0.9974956675339426,,,False
+kaiser,kaiser,,13,12.0,12,11.0,16.0,0.115,200,0,0,0.9999999999999997,,,False
+mp,mp,,1,1.0,1,1.0,1.0,1.0,200,0,0,4.0671363642002,True,,False
+mp_market,mp_market,,7,5.0,5,4.0,6.0,0.0,200,0,0,1.5119830595383157,,,False
+onatski,onatski,,3,2.0,1,1.0,3.0,0.255,200,0,0,0.5184466310085023,True,False,True
+parallel,parallel,,1,1.0,1,1.0,1.0,0.995,200,0,0,,,,False
+variance_share,variance_share,,20,17.0,16,14.0,20.0,0.125,200,0,0,0.9,,,False

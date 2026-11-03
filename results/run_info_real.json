@@ -1,0 +1,7 @@
+{
+  "command": "real",
+  "config": "configs/default.yaml",
+  "seconds": 98.436,
+  "n_failed": 0,
+  "kfactors_version": "0.1.0a1"
+}

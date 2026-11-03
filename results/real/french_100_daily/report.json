@@ -1,0 +1,75 @@
+{
+  "window_start": "2026-04-01",
+  "window_end": "2026-09-30",
+  "n": 126,
+  "p": 99,
+  "diagnostics": {
+    "n": 126,
+    "p": 99,
+    "p_over_n": 0.7857142857142857,
+    "standardize": true,
+    "spike_share": 0.46205432858582735,
+    "top_gap_ratios": [
+      5.898657535966373,
+      1.6296543638397862,
+      1.3512753958873711,
+      1.2984829195453953,
+      1.0655602502407482
+    ],
+    "gap_ratio_1": 5.898657535966373,
+    "max_gap_ratio": 5.898657535966373,
+    "argmax_gap_ratio": 1,
+    "mean_excess_kurtosis": 1.0643426349734788,
+    "median_excess_kurtosis": 0.5722608967292309,
+    "mean_acf1": -0.047750268588978385,
+    "mean_abs_acf1": 0.07451284574816344,
+    "mean_acf1_sq": 0.025472113856255432,
+    "var_dispersion": 0.6367380326343042
+  },
+  "recommended": {
+    "rule": "onatski",
+    "kwargs": {},
+    "label": "onatski",
+    "reason": "mean_abs_acf1 = 0.07451 <= 0.2; gap_ratio_1 = 5.899 > 4 [dominant first eigenvalue (market mode)] -> onatski: dominant market mode: Onatski (2010) needs no noise-variance estimate, so the market eigenvalue does not bias it; mp_market over-counts when betas or idiosyncratic volatilities are dispersed (branch 2 in meta)",
+    "path": [
+      {
+        "feature": "mean_abs_acf1",
+        "value": 0.07451284574816344,
+        "op": ">",
+        "threshold": 0.2,
+        "taken": "else"
+      },
+      {
+        "feature": "gap_ratio_1",
+        "value": 5.898657535966373,
+        "op": ">",
+        "threshold": 4.0,
+        "taken": "then"
+      }
+    ],
+    "table_kind": "heuristic",
+    "k": 1,
+    "k_boot_median": 2.0,
+    "k_boot_p_same": 0.47,
+    "k_distribution": {
+      "1": 0.47,
+      "2": 0.37,
+      "3": 0.08,
+      "4": 0.015,
+      "5": 0.01,
+      "6": 0.045,
+      "10": 0.01
+    }
+  },
+  "info": {
+    "n_boot": 200,
+    "mean_block": 5.0132979349645845,
+    "kmax": 20,
+    "kmax_effective": 20,
+    "standardize": true,
+    "boot_n_perm": 20,
+    "boot_unique_rows": true,
+    "boot_mean_rows": 81.895,
+    "random_state": 1886179623
+  }
+}

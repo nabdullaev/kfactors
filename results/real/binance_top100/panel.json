@@ -1,0 +1,1535 @@
+{
+  "name": "binance_top100",
+  "source": "binance",
+  "args": {
+    "top": 100,
+    "start": "2022-01-01",
+    "end": "2025-12-31",
+    "history_start": "2021-06-01",
+    "n_jobs": 32
+  },
+  "n_rows": 1675,
+  "n_assets": 560,
+  "first_date": "2021-06-01T00:00:00",
+  "last_date": "2025-12-31T00:00:00",
+  "freq": "D",
+  "periods_per_year": 365,
+  "fingerprint": "af0dabbb46884f18f0e2",
+  "share_missing": 0.39025799573560765,
+  "meta": {
+    "source": "Binance Vision spot monthly 1d klines",
+    "url_pattern": "https://data.binance.vision/data/spot/monthly/klines/{SYMBOL}/1d/{SYMBOL}-1d-{YYYY}-{MM}.zip",
+    "listing": "https://s3-ap-northeast-1.amazonaws.com/data.binance.vision?prefix=data/spot/monthly/klines/",
+    "quote": "USDT",
+    "top": 100,
+    "volume_window": 30,
+    "max_gap": 30,
+    "max_jump": 5.0,
+    "exclude_derivatives": true,
+    "history_start": "2021-06-01",
+    "start": "2022-01-01",
+    "end": "2025-12-31",
+    "requested_end": "2025-12-31",
+    "periods_per_year": 365,
+    "units": "simple close-to-close returns, decimal; UTC calendar days",
+    "universe_rule": "top 100 by trailing 30-day median quote volume among assets with a bar on each of the last 30 days, an observed return at t and a full 24 h bar at t; t >= start",
+    "n_listed_symbols": 3767,
+    "n_candidates": 694,
+    "n_symbols_in_range": 552,
+    "n_assets": 560,
+    "excluded": {
+      "stable": [
+        "AEURUSDT",
+        "AUDUSDT",
+        "BFUSDUSDT",
+        "BKRWUSDT",
+        "BUSDUSDT",
+        "DAIUSDT",
+        "EURIUSDT",
+        "EURUSDT",
+        "FDUSDUSDT",
+        "GBPUSDT",
+        "PAXGUSDT",
+        "PAXUSDT",
+        "RLUSDUSDT",
+        "RWUSDUSDT",
+        "SUSDUSDT",
+        "TUSDUSDT",
+        "USD1USDT",
+        "USDCUSDT",
+        "USDEBUSDT",
+        "USDEUSDT",
+        "USDPUSDT",
+        "USDSBUSDT",
+        "USDSOLDUSDT",
+        "USDSUSDT",
+        "USTCUSDT",
+        "USTUSDT",
+        "XAUTUSDT",
+        "XUSDUSDT"
+      ],
+      "leveraged": [
+        "1INCHDOWNUSDT",
+        "1INCHUPUSDT",
+        "AAVEDOWNUSDT",
+        "AAVEUPUSDT",
+        "ADADOWNUSDT",
+        "ADAUPUSDT",
+        "BCHDOWNUSDT",
+        "BCHUPUSDT",
+        "BEARUSDT",
+        "BNBBEARUSDT",
+        "BNBBULLUSDT",
+        "BNBDOWNUSDT",
+        "BNBUPUSDT",
+        "BTCDOWNUSDT",
+        "BTCUPUSDT",
+        "BULLUSDT",
+        "DOTDOWNUSDT",
+        "DOTUPUSDT",
+        "EOSBEARUSDT",
+        "EOSBULLUSDT",
+        "EOSDOWNUSDT",
+        "EOSUPUSDT",
+        "ETHBEARUSDT",
+        "ETHBULLUSDT",
+        "ETHDOWNUSDT",
+        "ETHUPUSDT",
+        "FILDOWNUSDT",
+        "FILUPUSDT",
+        "LINKDOWNUSDT",
+        "LINKUPUSDT",
+        "LTCDOWNUSDT",
+        "LTCUPUSDT",
+        "SUSHIDOWNUSDT",
+        "SUSHIUPUSDT",
+        "SXPDOWNUSDT",
+        "SXPUPUSDT",
+        "TRXDOWNUSDT",
+        "TRXUPUSDT",
+        "UNIDOWNUSDT",
+        "UNIUPUSDT",
+        "XLMDOWNUSDT",
+        "XLMUPUSDT",
+        "XRPBEARUSDT",
+        "XRPBULLUSDT",
+        "XRPDOWNUSDT",
+        "XRPUPUSDT",
+        "XTZDOWNUSDT",
+        "XTZUPUSDT",
+        "YFIDOWNUSDT",
+        "YFIUPUSDT"
+      ],
+      "derivative": [
+        "BETHUSDT",
+        "BNSOLUSDT",
+        "WBETHUSDT",
+        "WBTCUSDT"
+      ]
+    },
+    "stable_bases": [
+      "AEUR",
+      "ARS",
+      "AUD",
+      "BFUSD",
+      "BIDR",
+      "BKRW",
+      "BRL",
+      "BUSD",
+      "BVND",
+      "COP",
+      "CUSD",
+      "CZK",
+      "DAI",
+      "EUR",
+      "EURC",
+      "EURI",
+      "FDUSD",
+      "GBP",
+      "GUSD",
+      "IDR",
+      "IDRT",
+      "JPY",
+      "KZT",
+      "LUSD",
+      "MXN",
+      "NGN",
+      "PAX",
+      "PAXG",
+      "PLN",
+      "PYUSD",
+      "RLUSD",
+      "RON",
+      "RUB",
+      "SUSD",
+      "TRY",
+      "TRYB",
+      "TUSD",
+      "UAH",
+      "USD1",
+      "USDB",
+      "USDC",
+      "USDD",
+      "USDE",
+      "USDJ",
+      "USDP",
+      "USDS",
+      "USDSB",
+      "UST",
+      "USTC",
+      "VAI",
+      "XAUT",
+      "XUSD",
+      "ZAR"
+    ],
+    "derivative_bases": [
+      "BETH",
+      "BNSOL",
+      "CBETH",
+      "RETH",
+      "STETH",
+      "WBETH",
+      "WBNB",
+      "WBTC",
+      "WETH",
+      "WSTETH"
+    ],
+    "symbol": {
+      "0G": "0GUSDT",
+      "1000CAT": "1000CATUSDT",
+      "1000CHEEMS": "1000CHEEMSUSDT",
+      "1000SATS": "1000SATSUSDT",
+      "1INCH": "1INCHUSDT",
+      "1MBABYDOGE": "1MBABYDOGEUSDT",
+      "2Z": "2ZUSDT",
+      "A": "AUSDT",
+      "A2Z": "A2ZUSDT",
+      "AAVE": "AAVEUSDT",
+      "ACA": "ACAUSDT",
+      "ACE": "ACEUSDT",
+      "ACH": "ACHUSDT",
+      "ACM": "ACMUSDT",
+      "ACT": "ACTUSDT",
+      "ACX": "ACXUSDT",
+      "ADA": "ADAUSDT",
+      "ADX": "ADXUSDT",
+      "AERGO": "AERGOUSDT",
+      "AEVO": "AEVOUSDT",
+      "AGIX": "AGIXUSDT",
+      "AGLD": "AGLDUSDT",
+      "AI": "AIUSDT",
+      "AION": "AIONUSDT",
+      "AIXBT": "AIXBTUSDT",
+      "AKRO": "AKROUSDT",
+      "ALCX": "ALCXUSDT",
+      "ALGO": "ALGOUSDT",
+      "ALICE": "ALICEUSDT",
+      "ALLO": "ALLOUSDT",
+      "ALPACA": "ALPACAUSDT",
+      "ALPHA": "ALPHAUSDT",
+      "ALPINE": "ALPINEUSDT",
+      "ALT": "ALTUSDT",
+      "AMB": "AMBUSDT",
+      "AMP": "AMPUSDT",
+      "ANC": "ANCUSDT",
+      "ANIME": "ANIMEUSDT",
+      "ANKR": "ANKRUSDT",
+      "ANT": "ANTUSDT",
+      "ANY": "ANYUSDT",
+      "APE": "APEUSDT",
+      "API3": "API3USDT",
+      "APT": "APTUSDT",
+      "AR": "ARUSDT",
+      "ARB": "ARBUSDT",
+      "ARDR": "ARDRUSDT",
+      "ARK": "ARKUSDT",
+      "ARKM": "ARKMUSDT",
+      "ARPA": "ARPAUSDT",
+      "ASR": "ASRUSDT",
+      "AST": "ASTUSDT",
+      "ASTER": "ASTERUSDT",
+      "ASTR": "ASTRUSDT",
+      "AT": "ATUSDT",
+      "ATA": "ATAUSDT",
+      "ATM": "ATMUSDT",
+      "ATOM": "ATOMUSDT",
+      "AUCTION": "AUCTIONUSDT",
+      "AUDIO": "AUDIOUSDT",
+      "AUTO": "AUTOUSDT",
+      "AVA": "AVAUSDT",
+      "AVAX": "AVAXUSDT",
+      "AVNT": "AVNTUSDT",
+      "AWE": "AWEUSDT",
+      "AXL": "AXLUSDT",
+      "AXS": "AXSUSDT",
+      "BABY": "BABYUSDT",
+      "BADGER": "BADGERUSDT",
+      "BAKE": "BAKEUSDT",
+      "BAL": "BALUSDT",
+      "BANANA": "BANANAUSDT",
+      "BANANAS31": "BANANAS31USDT",
+      "BAND": "BANDUSDT",
+      "BANK": "BANKUSDT",
+      "BAR": "BARUSDT",
+      "BARD": "BARDUSDT",
+      "BAT": "BATUSDT",
+      "BB": "BBUSDT",
+      "BCH": "BCHUSDT",
+      "BEAM": "BEAMUSDT",
+      "BEAMX": "BEAMXUSDT",
+      "BEL": "BELUSDT",
+      "BERA": "BERAUSDT",
+      "BETA": "BETAUSDT",
+      "BICO": "BICOUSDT",
+      "BIFI": "BIFIUSDT",
+      "BIGTIME": "BIGTIMEUSDT",
+      "BIO": "BIOUSDT",
+      "BLUR": "BLURUSDT",
+      "BLZ": "BLZUSDT",
+      "BMT": "BMTUSDT",
+      "BNB": "BNBUSDT",
+      "BNT": "BNTUSDT",
+      "BNX": "BNXUSDT",
+      "BNX_2": "BNXUSDT",
+      "BOME": "BOMEUSDT",
+      "BOND": "BONDUSDT",
+      "BONK": "BONKUSDT",
+      "BROCCOLI714": "BROCCOLI714USDT",
+      "BSW": "BSWUSDT",
+      "BTC": "BTCUSDT",
+      "BTCST": "BTCSTUSDT",
+      "BTG": "BTGUSDT",
+      "BTS": "BTSUSDT",
+      "BTT": "BTTUSDT",
+      "BTTC": "BTTCUSDT",
+      "BURGER": "BURGERUSDT",
+      "BZRX": "BZRXUSDT",
+      "C": "CUSDT",
+      "C98": "C98USDT",
+      "CAKE": "CAKEUSDT",
+      "CATI": "CATIUSDT",
+      "CELO": "CELOUSDT",
+      "CELR": "CELRUSDT",
+      "CETUS": "CETUSUSDT",
+      "CFX": "CFXUSDT",
+      "CGPT": "CGPTUSDT",
+      "CHESS": "CHESSUSDT",
+      "CHR": "CHRUSDT",
+      "CHZ": "CHZUSDT",
+      "CITY": "CITYUSDT",
+      "CKB": "CKBUSDT",
+      "CLV": "CLVUSDT",
+      "COCOS": "COCOSUSDT",
+      "COMBO": "COMBOUSDT",
+      "COMP": "COMPUSDT",
+      "COOKIE": "COOKIEUSDT",
+      "COS": "COSUSDT",
+      "COTI": "COTIUSDT",
+      "COW": "COWUSDT",
+      "CREAM": "CREAMUSDT",
+      "CRV": "CRVUSDT",
+      "CTK": "CTKUSDT",
+      "CTSI": "CTSIUSDT",
+      "CTXC": "CTXCUSDT",
+      "CVC": "CVCUSDT",
+      "CVC_2": "CVCUSDT",
+      "CVP": "CVPUSDT",
+      "CVX": "CVXUSDT",
+      "CYBER": "CYBERUSDT",
+      "D": "DUSDT",
+      "DAR": "DARUSDT",
+      "DASH": "DASHUSDT",
+      "DATA": "DATAUSDT",
+      "DCR": "DCRUSDT",
+      "DEGO": "DEGOUSDT",
+      "DENT": "DENTUSDT",
+      "DEXE": "DEXEUSDT",
+      "DF": "DFUSDT",
+      "DGB": "DGBUSDT",
+      "DIA": "DIAUSDT",
+      "DNT": "DNTUSDT",
+      "DOCK": "DOCKUSDT",
+      "DODO": "DODOUSDT",
+      "DOGE": "DOGEUSDT",
+      "DOGS": "DOGSUSDT",
+      "DOLO": "DOLOUSDT",
+      "DOT": "DOTUSDT",
+      "DREP": "DREPUSDT",
+      "DUSK": "DUSKUSDT",
+      "DYDX": "DYDXUSDT",
+      "DYM": "DYMUSDT",
+      "EDEN": "EDENUSDT",
+      "EDU": "EDUUSDT",
+      "EGLD": "EGLDUSDT",
+      "EIGEN": "EIGENUSDT",
+      "ELF": "ELFUSDT",
+      "ENA": "ENAUSDT",
+      "ENJ": "ENJUSDT",
+      "ENS": "ENSUSDT",
+      "ENSO": "ENSOUSDT",
+      "EOS": "EOSUSDT",
+      "EPIC": "EPICUSDT",
+      "EPS": "EPSUSDT",
+      "EPX": "EPXUSDT",
+      "ERA": "ERAUSDT",
+      "ERN": "ERNUSDT",
+      "ETC": "ETCUSDT",
+      "ETH": "ETHUSDT",
+      "ETHFI": "ETHFIUSDT",
+      "EUL": "EULUSDT",
+      "F": "FUSDT",
+      "FARM": "FARMUSDT",
+      "FET": "FETUSDT",
+      "FF": "FFUSDT",
+      "FIDA": "FIDAUSDT",
+      "FIL": "FILUSDT",
+      "FIO": "FIOUSDT",
+      "FIRO": "FIROUSDT",
+      "FIS": "FISUSDT",
+      "FLM": "FLMUSDT",
+      "FLOKI": "FLOKIUSDT",
+      "FLOW": "FLOWUSDT",
+      "FLUX": "FLUXUSDT",
+      "FOR": "FORUSDT",
+      "FORM": "FORMUSDT",
+      "FORTH": "FORTHUSDT",
+      "FRONT": "FRONTUSDT",
+      "FTM": "FTMUSDT",
+      "FTT": "FTTUSDT",
+      "FTT_2": "FTTUSDT",
+      "FUN": "FUNUSDT",
+      "FXS": "FXSUSDT",
+      "G": "GUSDT",
+      "GAL": "GALUSDT",
+      "GALA": "GALAUSDT",
+      "GAS": "GASUSDT",
+      "GFT": "GFTUSDT",
+      "GHST": "GHSTUSDT",
+      "GIGGLE": "GIGGLEUSDT",
+      "GLM": "GLMUSDT",
+      "GLMR": "GLMRUSDT",
+      "GMT": "GMTUSDT",
+      "GMX": "GMXUSDT",
+      "GNO": "GNOUSDT",
+      "GNS": "GNSUSDT",
+      "GPS": "GPSUSDT",
+      "GRT": "GRTUSDT",
+      "GTC": "GTCUSDT",
+      "GTO": "GTOUSDT",
+      "GUN": "GUNUSDT",
+      "GXS": "GXSUSDT",
+      "HAEDAL": "HAEDALUSDT",
+      "HARD": "HARDUSDT",
+      "HBAR": "HBARUSDT",
+      "HEI": "HEIUSDT",
+      "HEMI": "HEMIUSDT",
+      "HFT": "HFTUSDT",
+      "HIFI": "HIFIUSDT",
+      "HIGH": "HIGHUSDT",
+      "HIVE": "HIVEUSDT",
+      "HMSTR": "HMSTRUSDT",
+      "HNT": "HNTUSDT",
+      "HOLO": "HOLOUSDT",
+      "HOME": "HOMEUSDT",
+      "HOOK": "HOOKUSDT",
+      "HOT": "HOTUSDT",
+      "HUMA": "HUMAUSDT",
+      "HYPER": "HYPERUSDT",
+      "ICP": "ICPUSDT",
+      "ICX": "ICXUSDT",
+      "ID": "IDUSDT",
+      "IDEX": "IDEXUSDT",
+      "ILV": "ILVUSDT",
+      "IMX": "IMXUSDT",
+      "INIT": "INITUSDT",
+      "INJ": "INJUSDT",
+      "IO": "IOUSDT",
+      "IOST": "IOSTUSDT",
+      "IOTA": "IOTAUSDT",
+      "IOTX": "IOTXUSDT",
+      "IQ": "IQUSDT",
+      "IRIS": "IRISUSDT",
+      "JASMY": "JASMYUSDT",
+      "JOE": "JOEUSDT",
+      "JST": "JSTUSDT",
+      "JTO": "JTOUSDT",
+      "JUP": "JUPUSDT",
+      "JUV": "JUVUSDT",
+      "KAIA": "KAIAUSDT",
+      "KAITO": "KAITOUSDT",
+      "KAVA": "KAVAUSDT",
+      "KDA": "KDAUSDT",
+      "KEEP": "KEEPUSDT",
+      "KERNEL": "KERNELUSDT",
+      "KEY": "KEYUSDT",
+      "KGST": "KGSTUSDT",
+      "KITE": "KITEUSDT",
+      "KLAY": "KLAYUSDT",
+      "KMD": "KMDUSDT",
+      "KMNO": "KMNOUSDT",
+      "KNC": "KNCUSDT",
+      "KP3R": "KP3RUSDT",
+      "KSM": "KSMUSDT",
+      "LA": "LAUSDT",
+      "LAYER": "LAYERUSDT",
+      "LAZIO": "LAZIOUSDT",
+      "LDO": "LDOUSDT",
+      "LEVER": "LEVERUSDT",
+      "LINA": "LINAUSDT",
+      "LINEA": "LINEAUSDT",
+      "LINK": "LINKUSDT",
+      "LISTA": "LISTAUSDT",
+      "LIT": "LITUSDT",
+      "LOKA": "LOKAUSDT",
+      "LOOM": "LOOMUSDT",
+      "LPT": "LPTUSDT",
+      "LQTY": "LQTYUSDT",
+      "LRC": "LRCUSDT",
+      "LSK": "LSKUSDT",
+      "LTC": "LTCUSDT",
+      "LTO": "LTOUSDT",
+      "LUMIA": "LUMIAUSDT",
+      "LUNA": "LUNAUSDT",
+      "LUNA_2": "LUNAUSDT",
+      "LUNC": "LUNCUSDT",
+      "MAGIC": "MAGICUSDT",
+      "MANA": "MANAUSDT",
+      "MANTA": "MANTAUSDT",
+      "MASK": "MASKUSDT",
+      "MATIC": "MATICUSDT",
+      "MAV": "MAVUSDT",
+      "MBL": "MBLUSDT",
+      "MBOX": "MBOXUSDT",
+      "MC": "MCUSDT",
+      "MDT": "MDTUSDT",
+      "MDX": "MDXUSDT",
+      "ME": "MEUSDT",
+      "MEME": "MEMEUSDT",
+      "MET": "METUSDT",
+      "METIS": "METISUSDT",
+      "MFT": "MFTUSDT",
+      "MINA": "MINAUSDT",
+      "MIR": "MIRUSDT",
+      "MIRA": "MIRAUSDT",
+      "MITH": "MITHUSDT",
+      "MITO": "MITOUSDT",
+      "MKR": "MKRUSDT",
+      "MLN": "MLNUSDT",
+      "MMT": "MMTUSDT",
+      "MOB": "MOBUSDT",
+      "MORPHO": "MORPHOUSDT",
+      "MOVE": "MOVEUSDT",
+      "MOVR": "MOVRUSDT",
+      "MTL": "MTLUSDT",
+      "MUBARAK": "MUBARAKUSDT",
+      "MULTI": "MULTIUSDT",
+      "NANO": "NANOUSDT",
+      "NBS": "NBSUSDT",
+      "NBT": "NBTUSDT",
+      "NEAR": "NEARUSDT",
+      "NEBL": "NEBLUSDT",
+      "NEIRO": "NEIROUSDT",
+      "NEO": "NEOUSDT",
+      "NEWT": "NEWTUSDT",
+      "NEXO": "NEXOUSDT",
+      "NFP": "NFPUSDT",
+      "NIL": "NILUSDT",
+      "NKN": "NKNUSDT",
+      "NMR": "NMRUSDT",
+      "NOM": "NOMUSDT",
+      "NOT": "NOTUSDT",
+      "NTRN": "NTRNUSDT",
+      "NU": "NUUSDT",
+      "NULS": "NULSUSDT",
+      "NXPC": "NXPCUSDT",
+      "OAX": "OAXUSDT",
+      "OCEAN": "OCEANUSDT",
+      "OG": "OGUSDT",
+      "OGN": "OGNUSDT",
+      "OM": "OMUSDT",
+      "OMG": "OMGUSDT",
+      "OMNI": "OMNIUSDT",
+      "ONDO": "ONDOUSDT",
+      "ONE": "ONEUSDT",
+      "ONG": "ONGUSDT",
+      "ONT": "ONTUSDT",
+      "OOKI": "OOKIUSDT",
+      "OP": "OPUSDT",
+      "OPEN": "OPENUSDT",
+      "ORCA": "ORCAUSDT",
+      "ORDI": "ORDIUSDT",
+      "ORN": "ORNUSDT",
+      "OSMO": "OSMOUSDT",
+      "OXT": "OXTUSDT",
+      "PARTI": "PARTIUSDT",
+      "PDA": "PDAUSDT",
+      "PENDLE": "PENDLEUSDT",
+      "PENGU": "PENGUUSDT",
+      "PEOPLE": "PEOPLEUSDT",
+      "PEPE": "PEPEUSDT",
+      "PERL": "PERLUSDT",
+      "PERP": "PERPUSDT",
+      "PHA": "PHAUSDT",
+      "PHB": "PHBUSDT",
+      "PIVX": "PIVXUSDT",
+      "PIXEL": "PIXELUSDT",
+      "PLA": "PLAUSDT",
+      "PLUME": "PLUMEUSDT",
+      "PNT": "PNTUSDT",
+      "PNUT": "PNUTUSDT",
+      "POL": "POLUSDT",
+      "POLS": "POLSUSDT",
+      "POLY": "POLYUSDT",
+      "POLYX": "POLYXUSDT",
+      "POND": "PONDUSDT",
+      "PORTAL": "PORTALUSDT",
+      "PORTO": "PORTOUSDT",
+      "POWR": "POWRUSDT",
+      "PROM": "PROMUSDT",
+      "PROS": "PROSUSDT",
+      "PROVE": "PROVEUSDT",
+      "PSG": "PSGUSDT",
+      "PUMP": "PUMPUSDT",
+      "PUNDIX": "PUNDIXUSDT",
+      "PYR": "PYRUSDT",
+      "PYTH": "PYTHUSDT",
+      "QI": "QIUSDT",
+      "QKC": "QKCUSDT",
+      "QNT": "QNTUSDT",
+      "QTUM": "QTUMUSDT",
+      "QUICK": "QUICKUSDT",
+      "QUICK_2": "QUICKUSDT",
+      "RAD": "RADUSDT",
+      "RAMP": "RAMPUSDT",
+      "RARE": "RAREUSDT",
+      "RAY": "RAYUSDT",
+      "RDNT": "RDNTUSDT",
+      "RED": "REDUSDT",
+      "REEF": "REEFUSDT",
+      "REI": "REIUSDT",
+      "REN": "RENUSDT",
+      "RENDER": "RENDERUSDT",
+      "REP": "REPUSDT",
+      "REQ": "REQUSDT",
+      "RESOLV": "RESOLVUSDT",
+      "REZ": "REZUSDT",
+      "RGT": "RGTUSDT",
+      "RIF": "RIFUSDT",
+      "RLC": "RLCUSDT",
+      "RNDR": "RNDRUSDT",
+      "RONIN": "RONINUSDT",
+      "ROSE": "ROSEUSDT",
+      "RPL": "RPLUSDT",
+      "RSR": "RSRUSDT",
+      "RUNE": "RUNEUSDT",
+      "RVN": "RVNUSDT",
+      "S": "SUSDT",
+      "SAGA": "SAGAUSDT",
+      "SAHARA": "SAHARAUSDT",
+      "SAND": "SANDUSDT",
+      "SANTOS": "SANTOSUSDT",
+      "SAPIEN": "SAPIENUSDT",
+      "SC": "SCUSDT",
+      "SCR": "SCRUSDT",
+      "SCRT": "SCRTUSDT",
+      "SEI": "SEIUSDT",
+      "SFP": "SFPUSDT",
+      "SHELL": "SHELLUSDT",
+      "SHIB": "SHIBUSDT",
+      "SIGN": "SIGNUSDT",
+      "SKL": "SKLUSDT",
+      "SKY": "SKYUSDT",
+      "SLF": "SLFUSDT",
+      "SLP": "SLPUSDT",
+      "SNT": "SNTUSDT",
+      "SNX": "SNXUSDT",
+      "SOL": "SOLUSDT",
+      "SOLV": "SOLVUSDT",
+      "SOMI": "SOMIUSDT",
+      "SOPH": "SOPHUSDT",
+      "SPELL": "SPELLUSDT",
+      "SPK": "SPKUSDT",
+      "SRM": "SRMUSDT",
+      "SSV": "SSVUSDT",
+      "STEEM": "STEEMUSDT",
+      "STG": "STGUSDT",
+      "STMX": "STMXUSDT",
+      "STO": "STOUSDT",
+      "STORJ": "STORJUSDT",
+      "STPT": "STPTUSDT",
+      "STRAX": "STRAXUSDT",
+      "STRAX_2": "STRAXUSDT",
+      "STRK": "STRKUSDT",
+      "STX": "STXUSDT",
+      "SUI": "SUIUSDT",
+      "SUN": "SUNUSDT",
+      "SUN_2": "SUNUSDT",
+      "SUPER": "SUPERUSDT",
+      "SUSHI": "SUSHIUSDT",
+      "SXP": "SXPUSDT",
+      "SXT": "SXTUSDT",
+      "SYN": "SYNUSDT",
+      "SYRUP": "SYRUPUSDT",
+      "SYS": "SYSUSDT",
+      "T": "TUSDT",
+      "TAO": "TAOUSDT",
+      "TCT": "TCTUSDT",
+      "TFUEL": "TFUELUSDT",
+      "THE": "THEUSDT",
+      "THETA": "THETAUSDT",
+      "TIA": "TIAUSDT",
+      "TKO": "TKOUSDT",
+      "TLM": "TLMUSDT",
+      "TNSR": "TNSRUSDT",
+      "TOMO": "TOMOUSDT",
+      "TON": "TONUSDT",
+      "TORN": "TORNUSDT",
+      "TOWNS": "TOWNSUSDT",
+      "TRB": "TRBUSDT",
+      "TREE": "TREEUSDT",
+      "TRIBE": "TRIBEUSDT",
+      "TROY": "TROYUSDT",
+      "TRU": "TRUUSDT",
+      "TRUMP": "TRUMPUSDT",
+      "TRX": "TRXUSDT",
+      "TST": "TSTUSDT",
+      "TURBO": "TURBOUSDT",
+      "TURTLE": "TURTLEUSDT",
+      "TUT": "TUTUSDT",
+      "TVK": "TVKUSDT",
+      "TWT": "TWTUSDT",
+      "UFT": "UFTUSDT",
+      "UMA": "UMAUSDT",
+      "UNFI": "UNFIUSDT",
+      "UNI": "UNIUSDT",
+      "USUAL": "USUALUSDT",
+      "UTK": "UTKUSDT",
+      "VANA": "VANAUSDT",
+      "VANRY": "VANRYUSDT",
+      "VELODROME": "VELODROMEUSDT",
+      "VET": "VETUSDT",
+      "VGX": "VGXUSDT",
+      "VIB": "VIBUSDT",
+      "VIC": "VICUSDT",
+      "VIDT": "VIDTUSDT",
+      "VIDT_2": "VIDTUSDT",
+      "VIRTUAL": "VIRTUALUSDT",
+      "VITE": "VITEUSDT",
+      "VOXEL": "VOXELUSDT",
+      "VTHO": "VTHOUSDT",
+      "W": "WUSDT",
+      "WAL": "WALUSDT",
+      "WAN": "WANUSDT",
+      "WAVES": "WAVESUSDT",
+      "WAXP": "WAXPUSDT",
+      "WCT": "WCTUSDT",
+      "WIF": "WIFUSDT",
+      "WIN": "WINUSDT",
+      "WING": "WINGUSDT",
+      "WLD": "WLDUSDT",
+      "WLFI": "WLFIUSDT",
+      "WNXM": "WNXMUSDT",
+      "WOO": "WOOUSDT",
+      "WRX": "WRXUSDT",
+      "WTC": "WTCUSDT",
+      "XAI": "XAIUSDT",
+      "XEC": "XECUSDT",
+      "XEM": "XEMUSDT",
+      "XLM": "XLMUSDT",
+      "XMR": "XMRUSDT",
+      "XNO": "XNOUSDT",
+      "XPL": "XPLUSDT",
+      "XRP": "XRPUSDT",
+      "XTZ": "XTZUSDT",
+      "XVG": "XVGUSDT",
+      "XVS": "XVSUSDT",
+      "YB": "YBUSDT",
+      "YFI": "YFIUSDT",
+      "YFII": "YFIIUSDT",
+      "YGG": "YGGUSDT",
+      "ZBT": "ZBTUSDT",
+      "ZEC": "ZECUSDT",
+      "ZEN": "ZENUSDT",
+      "ZIL": "ZILUSDT",
+      "ZK": "ZKUSDT",
+      "ZKC": "ZKCUSDT",
+      "ZRO": "ZROUSDT",
+      "ZRX": "ZRXUSDT"
+    },
+    "ticker_splits": [
+      {
+        "asset": "BNX_2",
+        "symbol": "BNXUSDT",
+        "first_bar": "2023-02-22",
+        "gap_days": 5,
+        "reason": "price_jump",
+        "price_ratio": 0.00903134
+      },
+      {
+        "asset": "CVC_2",
+        "symbol": "CVCUSDT",
+        "first_bar": "2023-05-12",
+        "gap_days": 153,
+        "reason": "gap",
+        "price_ratio": 0.911043
+      },
+      {
+        "asset": "FTT_2",
+        "symbol": "FTTUSDT",
+        "first_bar": "2023-09-22",
+        "gap_days": 310,
+        "reason": "gap",
+        "price_ratio": 0.767421
+      },
+      {
+        "asset": "LUNA_2",
+        "symbol": "LUNAUSDT",
+        "first_bar": "2022-05-31",
+        "gap_days": 17,
+        "reason": "price_jump",
+        "price_ratio": 177400.0
+      },
+      {
+        "asset": "QUICK_2",
+        "symbol": "QUICKUSDT",
+        "first_bar": "2023-07-21",
+        "gap_days": 3,
+        "reason": "price_jump",
+        "price_ratio": 0.000804178
+      },
+      {
+        "asset": "STRAX_2",
+        "symbol": "STRAXUSDT",
+        "first_bar": "2024-03-28",
+        "gap_days": 7,
+        "reason": "price_jump",
+        "price_ratio": 0.1026
+      },
+      {
+        "asset": "SUN_2",
+        "symbol": "SUNUSDT",
+        "first_bar": "2021-06-18",
+        "gap_days": 3,
+        "reason": "price_jump",
+        "price_ratio": 0.00119868
+      },
+      {
+        "asset": "VIDT_2",
+        "symbol": "VIDTUSDT",
+        "first_bar": "2022-11-09",
+        "gap_days": 8,
+        "reason": "price_jump",
+        "price_ratio": 0.0512365
+      }
+    ],
+    "partial_bars": [
+      {
+        "asset": "AERGO",
+        "date": "2025-03-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "AGIX",
+        "date": "2024-07-01",
+        "hours": 3.0
+      },
+      {
+        "asset": "AION",
+        "date": "2023-02-27",
+        "hours": 9.0
+      },
+      {
+        "asset": "AKRO",
+        "date": "2024-12-25",
+        "hours": 3.0
+      },
+      {
+        "asset": "ALPACA",
+        "date": "2025-05-02",
+        "hours": 3.0
+      },
+      {
+        "asset": "ALPHA",
+        "date": "2025-07-04",
+        "hours": 3.0
+      },
+      {
+        "asset": "AMB",
+        "date": "2025-02-24",
+        "hours": 3.0
+      },
+      {
+        "asset": "ANC",
+        "date": "2022-12-27",
+        "hours": 3.0
+      },
+      {
+        "asset": "ANT",
+        "date": "2024-02-20",
+        "hours": 3.0
+      },
+      {
+        "asset": "ANY",
+        "date": "2022-03-30",
+        "hours": 4.0
+      },
+      {
+        "asset": "AST",
+        "date": "2025-03-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "AUTO",
+        "date": "2023-04-18",
+        "hours": 3.0
+      },
+      {
+        "asset": "BADGER",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "BAKE",
+        "date": "2025-09-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "BAL",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "BEAM",
+        "date": "2023-01-26",
+        "hours": 9.0
+      },
+      {
+        "asset": "BETA",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "BLZ",
+        "date": "2024-12-25",
+        "hours": 3.0
+      },
+      {
+        "asset": "BNX",
+        "date": "2023-02-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "BNX_2",
+        "date": "2025-03-18",
+        "hours": 3.0
+      },
+      {
+        "asset": "BOND",
+        "date": "2024-07-22",
+        "hours": 3.0
+      },
+      {
+        "asset": "BSW",
+        "date": "2025-07-04",
+        "hours": 3.0
+      },
+      {
+        "asset": "BTCST",
+        "date": "2022-11-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "BTG",
+        "date": "2022-10-24",
+        "hours": 9.0
+      },
+      {
+        "asset": "BTS",
+        "date": "2023-12-07",
+        "hours": 3.0
+      },
+      {
+        "asset": "BTT",
+        "date": "2022-01-17",
+        "hours": 4.0
+      },
+      {
+        "asset": "BURGER",
+        "date": "2025-03-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "BZRX",
+        "date": "2021-12-20",
+        "hours": 4.0
+      },
+      {
+        "asset": "CLV",
+        "date": "2025-02-24",
+        "hours": 3.0
+      },
+      {
+        "asset": "COCOS",
+        "date": "2023-05-29",
+        "hours": 8.0
+      },
+      {
+        "asset": "COMBO",
+        "date": "2025-03-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "CREAM",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "CTXC",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "CVC",
+        "date": "2022-12-09",
+        "hours": 3.0
+      },
+      {
+        "asset": "CVP",
+        "date": "2024-08-26",
+        "hours": 3.0
+      },
+      {
+        "asset": "DAR",
+        "date": "2025-01-06",
+        "hours": 3.0
+      },
+      {
+        "asset": "DNT",
+        "date": "2022-10-24",
+        "hours": 9.0
+      },
+      {
+        "asset": "DOCK",
+        "date": "2024-07-22",
+        "hours": 3.0
+      },
+      {
+        "asset": "DREP",
+        "date": "2024-04-03",
+        "hours": 3.0
+      },
+      {
+        "asset": "ELF",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "EOS",
+        "date": "2025-05-26",
+        "hours": 3.0
+      },
+      {
+        "asset": "EPS",
+        "date": "2022-05-09",
+        "hours": 4.0
+      },
+      {
+        "asset": "EPX",
+        "date": "2024-08-26",
+        "hours": 3.0
+      },
+      {
+        "asset": "ERN",
+        "date": "2025-03-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "FIRO",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "FIS",
+        "date": "2025-12-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "FLM",
+        "date": "2025-11-12",
+        "hours": 3.0
+      },
+      {
+        "asset": "FOR",
+        "date": "2024-08-26",
+        "hours": 3.0
+      },
+      {
+        "asset": "FRONT",
+        "date": "2024-08-27",
+        "hours": 3.0
+      },
+      {
+        "asset": "FTM",
+        "date": "2025-01-13",
+        "hours": 3.0
+      },
+      {
+        "asset": "FTT",
+        "date": "2022-11-15",
+        "hours": 4.5
+      },
+      {
+        "asset": "GAL",
+        "date": "2024-07-15",
+        "hours": 3.0
+      },
+      {
+        "asset": "GFT",
+        "date": "2024-12-03",
+        "hours": 8.0
+      },
+      {
+        "asset": "GTO",
+        "date": "2022-11-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "GXS",
+        "date": "2022-04-25",
+        "hours": 4.0
+      },
+      {
+        "asset": "HARD",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "HIFI",
+        "date": "2025-09-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "HNT",
+        "date": "2022-10-14",
+        "hours": 3.0
+      },
+      {
+        "asset": "IRIS",
+        "date": "2024-12-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "KDA",
+        "date": "2025-11-12",
+        "hours": 3.0
+      },
+      {
+        "asset": "KEEP",
+        "date": "2022-02-16",
+        "hours": 4.0
+      },
+      {
+        "asset": "KEY",
+        "date": "2023-02-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "KEY",
+        "date": "2024-12-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "KLAY",
+        "date": "2024-10-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "KMD",
+        "date": "2025-07-04",
+        "hours": 3.0
+      },
+      {
+        "asset": "KP3R",
+        "date": "2024-11-06",
+        "hours": 3.0
+      },
+      {
+        "asset": "LEVER",
+        "date": "2025-07-04",
+        "hours": 3.0
+      },
+      {
+        "asset": "LINA",
+        "date": "2025-03-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "LIT",
+        "date": "2025-02-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "LOKA",
+        "date": "2025-07-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "LOOM",
+        "date": "2024-08-26",
+        "hours": 3.0
+      },
+      {
+        "asset": "LTO",
+        "date": "2025-07-04",
+        "hours": 3.0
+      },
+      {
+        "asset": "LUNA",
+        "date": "2022-05-13",
+        "hours": 0.667
+      },
+      {
+        "asset": "MATIC",
+        "date": "2024-09-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "MC",
+        "date": "2023-11-07",
+        "hours": 3.0
+      },
+      {
+        "asset": "MDX",
+        "date": "2024-07-22",
+        "hours": 3.0
+      },
+      {
+        "asset": "MFT",
+        "date": "2023-01-03",
+        "hours": 3.0
+      },
+      {
+        "asset": "MIR",
+        "date": "2022-12-27",
+        "hours": 3.0
+      },
+      {
+        "asset": "MITH",
+        "date": "2022-12-22",
+        "hours": 9.0
+      },
+      {
+        "asset": "MKR",
+        "date": "2025-09-15",
+        "hours": 3.0
+      },
+      {
+        "asset": "MOB",
+        "date": "2024-04-03",
+        "hours": 3.0
+      },
+      {
+        "asset": "MULTI",
+        "date": "2024-02-20",
+        "hours": 3.0
+      },
+      {
+        "asset": "NANO",
+        "date": "2022-01-24",
+        "hours": 4.0
+      },
+      {
+        "asset": "NBS",
+        "date": "2022-10-24",
+        "hours": 9.0
+      },
+      {
+        "asset": "NEBL",
+        "date": "2023-04-18",
+        "hours": 3.0
+      },
+      {
+        "asset": "NU",
+        "date": "2022-02-16",
+        "hours": 4.0
+      },
+      {
+        "asset": "NULS",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "OAX",
+        "date": "2024-12-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "OCEAN",
+        "date": "2024-07-01",
+        "hours": 3.0
+      },
+      {
+        "asset": "OMG",
+        "date": "2024-06-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "OMNI",
+        "date": "2025-09-29",
+        "hours": 3.0
+      },
+      {
+        "asset": "OOKI",
+        "date": "2024-11-06",
+        "hours": 3.0
+      },
+      {
+        "asset": "ORN",
+        "date": "2024-10-15",
+        "hours": 3.0
+      },
+      {
+        "asset": "PDA",
+        "date": "2025-05-02",
+        "hours": 3.0
+      },
+      {
+        "asset": "PERL",
+        "date": "2023-12-07",
+        "hours": 3.0
+      },
+      {
+        "asset": "PERP",
+        "date": "2025-11-12",
+        "hours": 3.0
+      },
+      {
+        "asset": "PLA",
+        "date": "2024-02-26",
+        "hours": 3.0
+      },
+      {
+        "asset": "PNT",
+        "date": "2024-04-03",
+        "hours": 3.0
+      },
+      {
+        "asset": "POLS",
+        "date": "2024-07-22",
+        "hours": 3.0
+      },
+      {
+        "asset": "POLY",
+        "date": "2022-10-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "PROS",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "QUICK",
+        "date": "2023-07-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "RAMP",
+        "date": "2022-07-04",
+        "hours": 4.0
+      },
+      {
+        "asset": "REEF",
+        "date": "2024-08-26",
+        "hours": 3.0
+      },
+      {
+        "asset": "REI",
+        "date": "2025-12-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "REN",
+        "date": "2024-12-10",
+        "hours": 3.0
+      },
+      {
+        "asset": "REP",
+        "date": "2022-12-22",
+        "hours": 9.0
+      },
+      {
+        "asset": "RGT",
+        "date": "2022-03-14",
+        "hours": 4.0
+      },
+      {
+        "asset": "RNDR",
+        "date": "2024-07-22",
+        "hours": 3.0
+      },
+      {
+        "asset": "SCR",
+        "date": "2024-10-21",
+        "hours": 9.0
+      },
+      {
+        "asset": "SLF",
+        "date": "2025-09-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "SNT",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "SRM",
+        "date": "2022-11-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "STMX",
+        "date": "2025-02-24",
+        "hours": 3.0
+      },
+      {
+        "asset": "STPT",
+        "date": "2025-05-19",
+        "hours": 3.0
+      },
+      {
+        "asset": "STRAX",
+        "date": "2024-03-20",
+        "hours": 3.0
+      },
+      {
+        "asset": "SUN",
+        "date": "2021-06-14",
+        "hours": 4.0
+      },
+      {
+        "asset": "TCT",
+        "date": "2022-10-24",
+        "hours": 9.0
+      },
+      {
+        "asset": "TOMO",
+        "date": "2023-11-20",
+        "hours": 3.0
+      },
+      {
+        "asset": "TORN",
+        "date": "2022-12-27",
+        "hours": 3.0
+      },
+      {
+        "asset": "TRIBE",
+        "date": "2022-11-28",
+        "hours": 3.0
+      },
+      {
+        "asset": "TROY",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "TVK",
+        "date": "2023-11-27",
+        "hours": 3.0
+      },
+      {
+        "asset": "UFT",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "UNFI",
+        "date": "2024-11-06",
+        "hours": 3.0
+      },
+      {
+        "asset": "USUAL",
+        "date": "2024-12-17",
+        "hours": 9.0
+      },
+      {
+        "asset": "VGX",
+        "date": "2024-08-26",
+        "hours": 3.0
+      },
+      {
+        "asset": "VIB",
+        "date": "2025-05-02",
+        "hours": 3.0
+      },
+      {
+        "asset": "VIDT",
+        "date": "2022-10-31",
+        "hours": 3.0
+      },
+      {
+        "asset": "VIDT_2",
+        "date": "2025-04-16",
+        "hours": 3.0
+      },
+      {
+        "asset": "VITE",
+        "date": "2025-02-24",
+        "hours": 3.0
+      },
+      {
+        "asset": "VOXEL",
+        "date": "2025-12-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "WAVES",
+        "date": "2024-06-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "WING",
+        "date": "2025-05-02",
+        "hours": 3.0
+      },
+      {
+        "asset": "WNXM",
+        "date": "2024-06-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "WRX",
+        "date": "2024-12-25",
+        "hours": 3.0
+      },
+      {
+        "asset": "WTC",
+        "date": "2023-12-07",
+        "hours": 3.0
+      },
+      {
+        "asset": "XEM",
+        "date": "2024-06-17",
+        "hours": 3.0
+      },
+      {
+        "asset": "XMR",
+        "date": "2024-02-20",
+        "hours": 3.0
+      },
+      {
+        "asset": "YFII",
+        "date": "2023-08-22",
+        "hours": 3.0
+      }
+    ],
+    "n_files": 19021,
+    "n_files_cached_before": 19021,
+    "n_files_404": 0,
+    "n_duplicate_bars_dropped": 0,
+    "licence": "CC BY-NC-SA 4.0 (Binance Vision Dataset Terms v1.0)",
+    "licence_url": "https://data.binance.vision/",
+    "citation": "Binance Vision public market data, spot monthly 1d klines, https://data.binance.vision"
+  }
+}

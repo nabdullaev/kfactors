@@ -1,0 +1,7 @@
+{
+  "command": "sim",
+  "config": "configs/default.yaml",
+  "seconds": 305.881,
+  "n_failed": 0,
+  "kfactors_version": "0.1.0a1"
+}

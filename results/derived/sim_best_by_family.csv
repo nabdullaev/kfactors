@@ -1,0 +1,6 @@
+family,n_panels,best_by_exact,best_exact_pct,best_by_mae,best_mae,onatski_exact_pct,onatski_mae
+market,360,mp_market,85.0,mp_market,0.158,71.9,0.367
+null,180,6 rules tie,100.0,6 rules tie,0.0,98.3,0.033
+pervasive,720,onatski,76.4,onatski,0.447,76.4,0.447
+spiked,720,"parallel(devolatilize=true, null=circular)",45.7,parallel(null=circular),1.074,28.2,1.465
+weak,240,mp(noise=median),48.3,mp(noise=median),0.558,16.2,0.867

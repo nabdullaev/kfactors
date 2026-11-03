@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "train_accuracy": 0.7184684684684685,
+    "leave_one_family_out_accuracy": 0.6391891891891892,
+    "leave_one_family_out_accuracy_by_family": {
+      "market": 0.7694444444444445,
+      "null": 0.9833333333333333,
+      "pervasive": 0.6611111111111111,
+      "spiked": 0.4791666666666667,
+      "weak": 0.6
+    },
+    "mae_tree_train": 0.7463963963963964,
+    "mae_tree_lofo": 0.8900900900900901,
+    "best_single_rule": "onatski",
+    "mae_best_single_rule": 0.7761261261261261,
+    "mae_oracle": 0.3301801801801802,
+    "target_counts": {
+      "onatski": 1588,
+      "parallel": 168,
+      "mp(noise=median)": 96,
+      "mp_market": 59,
+      "bai_ng(criterion=PC_p1)": 56,
+      "parallel(devolatilize=true, null=circular)": 53,
+      "parallel(devolatilize=true)": 47,
+      "parallel(null=block)": 46,
+      "mp": 34,
+      "parallel(null=circular)": 22,
+      "gavish_donoho": 15,
+      "bai_ng(criterion=IC_p1)": 14,
+      "bai_ng": 10,
+      "ahn_horenstein": 7,
+      "ahn_horenstein(stat=GR)": 5
+    },
+    "max_depth": 3,
+    "min_samples_leaf": 5,
+    "features": [
+      "p_over_n",
+      "spike_share",
+      "gap_ratio_1",
+      "mean_excess_kurtosis",
+      "mean_abs_acf1",
+      "mean_acf1_sq",
+      "var_dispersion"
+    ]
+  }
+}

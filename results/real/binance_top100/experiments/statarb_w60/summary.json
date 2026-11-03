@@ -1,0 +1,60 @@
+{
+  "panel": "binance_top100",
+  "experiment": "statarb_w60",
+  "strategy": "kfactors.strategies.statarb:ResidualReversion",
+  "strategy_kwargs": {
+    "estimation_window": 60
+  },
+  "metric": "sharpe_net",
+  "k_grid": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "rules": [
+    "ahn_horenstein",
+    "bai_ng",
+    "gavish_donoho",
+    "kaiser",
+    "mp",
+    "mp_market",
+    "onatski",
+    "parallel",
+    "variance_share"
+  ],
+  "walkforward": {
+    "window": 60,
+    "rebalance": 1,
+    "lag": 1,
+    "cost_bps": 10.0,
+    "min_assets": 30,
+    "standardize": true,
+    "kmax": 20,
+    "start": "2022-01-01",
+    "end": null,
+    "rule_kwargs": {},
+    "random_state": 0,
+    "drift": false
+  },
+  "n_boot": 1000,
+  "alpha": 0.1,
+  "mean_block": null,
+  "seed": 0,
+  "fingerprint": "af0dabbb46884f18f0e2",
+  "status": "skipped",
+  "message": "strategy kfactors.strategies.statarb:ResidualReversion is not implemented yet (NotImplementedError: Card B: ResidualReversion.weights is not implemented yet (see docs/tasks/card_B_statarb.md)); experiment skipped",
+  "seconds": 0.038
+}
