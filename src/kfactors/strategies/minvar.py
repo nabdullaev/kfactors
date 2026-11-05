@@ -29,6 +29,7 @@ acceptance tests in ``tests/teammates/test_card_A_minvar.py``.
 """
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 
 from kfactors.strategy import Context, Strategy
@@ -104,7 +105,14 @@ class MinVariance(Strategy):
         3. ``w = x / x.sum()``; check ``np.isfinite(w).all()`` and ``x.sum() > 0``.
         4. Return ``pd.Series(w, index=window.returns.columns, name=self.name)``.
         """
-        raise NotImplementedError(
-            "Card A: MinVariance.weights is not implemented yet "
-            "(see docs/tasks/card_A_minvar.md)"
-        )
+        S = model.covariance(residual=self.residual)
+
+        x = np.linalg.solve(S, np.ones(S.shape[0]))
+        denominator = x.sum()
+
+        if not np.isfinite(x).all() or not np.isfinite(denominator) or denominator <= 0:
+            raise ValueError("Invalid GMV portfolio weights")
+
+        w = x / denominator
+
+        return pd.Series(w, index=window.returns.columns, name=self.name)
