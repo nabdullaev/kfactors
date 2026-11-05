@@ -1,0 +1,49 @@
+
+site_name: kfactors
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: numpy
+
+markdown_extensions:
+  - pymdownx.snippets:
+      check_paths: true
+
+not_in_nav: |
+  tasks/*
+
+nav:
+  - Home: index.md
+  - Install: install.md
+  - Quick start: quickstart.md
+  - Concepts: concepts.md
+  - Choosing a rule: rules.md
+  - Examples:
+      - Factor zoo: examples/factor_zoo.md
+      - Crypto stat-arb: examples/crypto_statarb.md
+      - Ken French robustness: examples/french_robustness.md
+  - API:
+      - Baselines: api/baselines.md
+      - Data: api/data.md
+      - Engine: api/engine.md
+      - Evaluate: api/evaluate.md
+      - Metrics: api/metrics.md
+      - Model: api/model.md
+      - Plots: api/plots.md
+      - Report: api/report.md
+      - Rules: api/rules.md
+      - Simulation: api/sim.md
+      - Scikit-learn API: api/sklearn_api.md
+      - Strategies: api/strategies.md
+      - Strategy: api/strategy.md
+      - Utils: api/utils.md
+  - Design: design.md
+  - Contributing: contributing.md
