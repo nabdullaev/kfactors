@@ -7,14 +7,14 @@ leak future data by accident.
 
 ## Who does what
 
-| Person | Card | What you build | Difficulty | Target date |
-|---|---|---|---|---|
-| Kamilla | [A](card_A_minvar.md) | Minimum-variance portfolio from the factor-model covariance (the **risk** evaluator) | easy | 10 Nov |
-| Kamilla | [C](card_C_baselines.md) | Thin wrappers around sklearn / statsmodels / optht selectors (the **baselines**) | easy | 14 Nov |
-| Adel | [B](card_B_statarb.md) | Avellaneda-Lee stat-arb trading rule on factor residuals (the **trading** evaluator) | medium | 17 Nov |
-| Both | [D](card_D_docs_examples.md) | Docs site + 2 worked examples (Kamilla: factor zoo / Ken French; Adel: crypto stat-arb) | easy | 4 Dec |
+| Person | Card | What you build | Difficulty |
+|---|---|---|---|
+| Kamilla | [A](card_A_minvar.md) | Minimum-variance portfolio from the factor-model covariance (the **risk** evaluator) | easy |
+| Kamilla | [C](card_C_baselines.md) | Thin wrappers around sklearn / statsmodels / optht selectors (the **baselines**) | easy |
+| Adel | [B](card_B_statarb.md) | Avellaneda-Lee stat-arb trading rule on factor residuals (the **trading** evaluator) | medium |
+| Both | [D](card_D_docs_examples.md) | Docs site + 2 worked examples (Kamilla: factor zoo / Ken French; Adel: crypto stat-arb) | easy |
 
-Final hand-in: **Fri 18 Dec 2026**. Nursultan reviews every pull request.
+Nursultan reviews every pull request.
 
 ## Five steps
 
