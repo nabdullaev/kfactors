@@ -103,7 +103,16 @@ class SelectedPCA(ClassNamePrefixFeaturesOutMixin, TransformerMixin, BaseEstimat
 
     Parameters
     ----------
-    Same as :class:`FactorCountSelector`.
+    method : str, default="onatski"
+        Rule name in :data:`kfactors.rules.RULES`.
+    kmax : int, default=20
+        Maximum number of factors.
+    standardize : bool, default=True
+        Whether to standardize the input data.
+    random_state : None, int, Generator or RandomState
+        Seed for stochastic rules.
+    rule_kwargs : dict or None
+        Additional keyword arguments passed to the factor-selection rule.
 
     Attributes
     ----------

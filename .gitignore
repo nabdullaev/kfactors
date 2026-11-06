@@ -11,3 +11,5 @@ coverage.xml
 .kfactors-cache/
 build/
 dist/
+site/
+results/
