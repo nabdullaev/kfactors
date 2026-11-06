@@ -1,13 +1,12 @@
-
 # Factor Zoo: Portfolio Performance and Factor Selection
 
 This example demonstrates how to use `kfactors` to estimate the number of principal components that maximizes portfolio performance on the US Factor Zoo dataset.
 
-The experiment uses a walk-forward evaluation procedure to avoid look-ahead bias.
+The experiment uses a walk-forward evaluation procedure to avoid look-ahead bias. It also compares factor-selection rules and performs additional diagnostics on the last complete observation window.
 
 ## 1. Loading the Data
 
-Load the monthly US Factor Zoo dataset:
+The example uses the monthly US Factor Zoo dataset:
 
 ```python
 from kfactors.data import load_jkp
@@ -55,7 +54,7 @@ result = k_curve(
 )
 ```
 
-## 4. Visualizing the Results
+## 4. Visualizing Portfolio Performance
 
 Plot the performance curve:
 
@@ -65,33 +64,90 @@ result.plot()
 
 The curve shows how portfolio performance changes with the number of principal components. Bootstrap confidence bands help assess uncertainty in the estimated performance.
 
-The result also provides information about the oracle number of factors, its confidence set, and the performance of different factor-selection rules.
+The result also provides the oracle number of factors, its confidence set, and the performance of different factor-selection rules.
 
-## 5. Saving the Results
+## 5. Factor Diagnostics
 
-Save the performance curve, factor-selection results, and plot:
+The example also examines the last 120 complete observations:
 
 ```python
-from pathlib import Path
+from kfactors.report import report
 
-out = Path("results/examples")
-out.mkdir(parents=True, exist_ok=True)
-
-result.curve.to_csv(out / "factor_zoo_curve.csv")
-result.rules.to_csv(out / "factor_zoo_rules.csv")
-
-result.plot().figure.savefig(
-    out / "factor_zoo_k_curve.png",
-    dpi=150,
+diagnostic_panel = panel.window(
+    end=-1,
+    length=120,
+    complete=True,
 )
 
-print("Results saved to", out.resolve())
+diagnostic = report(
+    diagnostic_panel.returns,
+    kmax=20,
+    n_boot=200,
+    standardize=True,
+    random_state=0,
+)
 ```
 
-## 6. Interpretation
+The report includes factor-selection results, bootstrap information, and diagnostic plots.
 
-This experiment helps investigate whether a relatively small number of principal components is sufficient to achieve good portfolio performance.
+The eigenvalue spectrum can also be examined:
 
-Compare the estimated number of factors across selection rules and examine whether their choices belong to the oracle confidence set.
+```python
+from kfactors.plots import plot_spectrum
+from kfactors.utils import preprocess, eigvals_desc
 
-The conclusions should be based on the actual experimental results rather than assumed in advance.
+Z, _, _ = preprocess(
+    diagnostic_panel.returns,
+    standardize=True,
+)
+
+eigenvalues = eigvals_desc(Z)
+
+plot_spectrum(
+    eigenvalues,
+    n=Z.shape[0],
+    p=Z.shape[1],
+)
+```
+
+## 6. Running the Complete Example
+
+The complete, reproducible script is available at `examples/01_factor_zoo.py`.
+
+Run it from the repository root:
+
+```bash
+python examples/01_factor_zoo.py
+```
+
+The script saves the results to `results/examples/`:
+
+| File | Description |
+|---|---|
+| `factor_zoo_curve.csv` | Performance curve and bootstrap intervals |
+| `factor_zoo_rules.csv` | Factor-selection rule results |
+| `factor_zoo_k_curve.png` | Portfolio performance versus k |
+| `factor_zoo_report.md` | Diagnostic report |
+| `factor_zoo_diagnostics.png` | Diagnostic plots |
+| `factor_zoo_spectrum.png` | Eigenvalue spectrum |
+
+## 7. Experimental Results
+
+In the observed run, the walk-forward experiment produced:
+
+- Oracle k: **18**.
+- Oracle set: **[15, 17, 18, 19, 20]**.
+- Gavish–Donoho selected k = 20, which belongs to the oracle set.
+- Bai–Ng selected k = 16, close to the oracle range but outside the set.
+
+The diagnostic report for the last 120-month window recommended the Onatski rule with k = 2. Its bootstrap probability of selecting the same value was 0.865.
+
+These results are not contradictory. The walk-forward k-curve evaluates portfolio performance across multiple evaluation windows, while the diagnostic report examines the factor structure of one particular window.
+
+## 8. Interpretation
+
+The experiment illustrates that the number of factors maximizing portfolio performance does not necessarily coincide with the number suggested by statistical factor-selection rules.
+
+The oracle value is an empirical benchmark, not a factor-selection rule that can be used without knowledge of the evaluation results. Comparing the rules with the oracle set helps assess how much portfolio performance is lost when using an estimated number of factors.
+
+Results may vary with the dataset version, preprocessing choices, and bootstrap settings.
