@@ -31,6 +31,14 @@ TODO (Card C): implement the five functions below. See ``docs/tasks/card_C_basel
 """
 from __future__ import annotations
 
+import warnings
+
+import numpy as np
+import pandas as pd
+from sklearn.decomposition import PCA
+
+import kfactors.utils
+
 
 class BaselineUnavailableWarning(UserWarning):
     """Emitted (via :func:`warnings.warn`) when a baseline returns ``None``; the message says why.
@@ -66,8 +74,15 @@ def sklearn_variance_share(X, share: float = 0.9, *, standardize: bool = True) -
     ValueError
         If ``share`` is not strictly between 0 and 1, or ``X`` is invalid.
     """
-    raise NotImplementedError("Card C: sklearn_variance_share is not implemented yet "
-                              "(see docs/tasks/card_C_baselines.md)")
+    if not 0 < share < 1:
+        raise ValueError("share must be strictly between 0 and 1")
+
+    Z, _, _ = kfactors.utils.preprocess(X, standardize=standardize)
+
+    model = PCA(n_components=share, svd_solver="full")
+    model.fit(Z)
+
+    return int(model.n_components_)
 
 
 def sklearn_mle(X, *, standardize: bool = True) -> int | None:
@@ -93,8 +108,21 @@ def sklearn_mle(X, *, standardize: bool = True) -> int | None:
     ValueError
         If ``X`` is invalid (NaN, too small, zero-variance column).
     """
-    raise NotImplementedError("Card C: sklearn_mle is not implemented yet "
-                              "(see docs/tasks/card_C_baselines.md)")
+    Z, _, _ = kfactors.utils.preprocess(X, standardize=standardize)
+    n, p = Z.shape
+
+    if n < p:
+        warnings.warn(
+            f"sklearn_mle requires n >= p, but n < p (n={n}, p={p})",
+            BaselineUnavailableWarning,
+            stacklevel=2,
+        )
+        return None
+
+    model = PCA(n_components="mle", svd_solver="full")
+    model.fit(Z)
+
+    return int(model.n_components_)
 
 
 def statsmodels_bai_ng(X, criterion: str = "IC_p2", kmax: int = 20, *,
@@ -131,8 +159,28 @@ def statsmodels_bai_ng(X, criterion: str = "IC_p2", kmax: int = 20, *,
         Unknown ``criterion``, ``kmax < 1`` or invalid ``X`` (validate ``X`` with
         ``kfactors.utils.as_2d_array`` first so NaN raises ``ValueError``).
     """
-    raise NotImplementedError("Card C: statsmodels_bai_ng is not implemented yet "
-                              "(see docs/tasks/card_C_baselines.md)")
+    if criterion not in ("IC_p1", "IC_p2", "IC_p3"):
+        raise ValueError("criterion must be IC_p1, IC_p2 or IC_p3")
+
+    from statsmodels.multivariate.pca import PCA
+
+    from kfactors.rules.base import effective_kmax
+
+    A = kfactors.utils.as_2d_array(X)
+    n, p = A.shape
+
+    kmax_eff = effective_kmax(n, p, kmax)
+    m = min(n - 1, p)
+    kmax_bn = min(kmax_eff, max(1, m // 2))
+
+    pc = PCA(
+        pd.DataFrame(A),
+        ncomp=kmax_bn,
+        standardize=standardize,
+        demean=True,
+    )
+
+    return int(pc.ic[criterion].to_numpy().argmin())
 
 
 def horns_parallel(X, n_sim: int = 1000, quantile: float = 0.95) -> int | None:
@@ -170,9 +218,32 @@ def horns_parallel(X, n_sim: int = 1000, quantile: float = 0.95) -> int | None:
     the function (``import horns``), never at module level, so ``kfactors.baselines`` imports
     fine without it. Our own seeded implementation is ``kfactors.select_k(X, "parallel")``.
     """
-    raise NotImplementedError("Card C: horns_parallel is not implemented yet "
-                              "(see docs/tasks/card_C_baselines.md)")
+    if n_sim < 1:
+        raise ValueError("n_sim must be at least 1")
 
+    if not 0 < quantile < 1:
+        raise ValueError("quantile must be strictly between 0 and 1")
+
+    A = kfactors.utils.as_2d_array(X)
+
+    try:
+        import horns
+    except ImportError:
+        warnings.warn(
+            "horns is not installed; parallel analysis baseline is unavailable",
+            BaselineUnavailableWarning,
+            stacklevel=2,
+        )
+        return None
+
+    return int(
+        horns.parallel_analysis(
+            A,
+            simulations=n_sim,
+            analysis_type="pca",
+            quantile=quantile,
+        )
+    )
 
 def optht_threshold(X, *, standardize: bool = True) -> int:
     """Gavish & Donoho (2014) optimal hard threshold (unknown noise) via ``optht``.
@@ -202,5 +273,16 @@ def optht_threshold(X, *, standardize: bool = True) -> int:
     ValueError
         Invalid ``X``.
     """
-    raise NotImplementedError("Card C: optht_threshold is not implemented yet "
-                              "(see docs/tasks/card_C_baselines.md)")
+    import optht
+
+    Z, _, _ = kfactors.utils.preprocess(X, standardize=standardize)
+    n, p = Z.shape
+
+    m = min(n - 1, p)
+    sv = np.linalg.svd(Z, compute_uv=False)[:m]
+    beta = m / max(n - 1, p)
+
+    try:
+        return int(optht.optht(beta, sv=sv, sigma=None))
+    except ValueError:
+        return 0
