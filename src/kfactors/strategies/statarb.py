@@ -80,8 +80,20 @@ def fit_ar1(x) -> tuple[float, float, float]:
 
     TODO (Card B, step 1).
     """
-    raise NotImplementedError("Card B: fit_ar1 is not implemented yet "
-                              "(see docs/tasks/card_B_statarb.md)")
+    x = np.asarray(x, dtype=float)
+    if x.ndim != 1 or len(x) < 3 or not np.isfinite(x).all():
+        raise ValueError("x must be a finite 1-D array with at least 3 elements")
+
+    x0, x1 = x[:-1], x[1:]
+    x0_centered = x0 - x0.mean()
+    denominator = np.sum(x0_centered ** 2)
+    if denominator == 0:
+        return (np.nan, np.nan, np.nan)
+
+    b = float(np.sum(x0_centered * (x1 - x1.mean())) / denominator)
+    a = float(x1.mean() - b * x0.mean())
+    zeta = x1 - (a + b * x0)
+    return a, b, float(np.mean(zeta ** 2))
 
 
 def s_scores(residuals, *, max_tau: float, center: bool = True) -> pd.DataFrame:
@@ -125,8 +137,36 @@ def s_scores(residuals, *, max_tau: float, center: bool = True) -> pd.DataFrame:
     :func:`fit_ar1`; compute the columns above with numpy (watch out for ``log`` of
     ``b <= 0`` and division by ``1 - b`` when ``b >= 1``: those assets are simply ineligible).
     """
-    raise NotImplementedError("Card B: s_scores is not implemented yet "
-                              "(see docs/tasks/card_B_statarb.md)")
+    residuals = np.asarray(residuals, dtype=float)
+    if (residuals.ndim != 2 or residuals.shape[0] < 3
+            or not np.isfinite(residuals).all() or not np.isfinite(max_tau)
+            or max_tau <= 0):
+        raise ValueError("residuals must be a finite 2-D array and max_tau must be positive")
+
+    cumulative = np.cumsum(residuals, axis=0)
+    p = residuals.shape[1]
+    values = np.full((p, 7), np.nan, dtype=float)
+    eligible = np.zeros(p, dtype=bool)
+
+    for i in range(p):
+        a, b, var_zeta = fit_ar1(cumulative[:, i])
+        values[i, :2] = a, b
+        if 0 < b < 1:
+            kappa = -np.log(b)
+            tau = 1 / kappa
+            m = a / (1 - b)
+            sigma_eq = np.sqrt(var_zeta / (1 - b ** 2))
+            values[i, 2:6] = kappa, tau, m, sigma_eq
+            eligible[i] = var_zeta > 0 and tau < max_tau
+
+    if center and eligible.any():
+        values[:, 4] = values[:, 4] - values[eligible, 4].mean()
+
+    values[eligible, 6] = ((cumulative[-1, eligible] - values[eligible, 4])
+                           / values[eligible, 5])
+    result = pd.DataFrame(values, columns=S_SCORE_COLUMNS[:-1])
+    result["eligible"] = eligible
+    return result
 
 
 def update_positions(s: pd.Series, previous: pd.Series | None = None, *,
@@ -170,8 +210,33 @@ def update_positions(s: pd.Series, previous: pd.Series | None = None, *,
     TODO (Card B, step 3). Vectorise with numpy boolean masks or write a clear loop; both are
     fine (p is at most a few thousand).
     """
-    raise NotImplementedError("Card B: update_positions is not implemented yet "
-                              "(see docs/tasks/card_B_statarb.md)")
+    if not (s_open > 0 and s_close_long >= 0 and s_close_short >= 0
+            and s_close_long < s_open and s_close_short < s_open):
+        raise ValueError("invalid Avellaneda-Lee thresholds")
+    if not isinstance(s, pd.Series):
+        raise ValueError("s must be a pandas Series")
+
+    if previous is None:
+        previous = pd.Series(0, index=s.index, dtype=int)
+    else:
+        if not isinstance(previous, pd.Series):
+            raise ValueError("previous must be a pandas Series or None")
+        if not previous.isin((-1, 0, 1)).all():
+            raise ValueError("previous positions must be in {-1, 0, 1}")
+        previous = previous.reindex(s.index, fill_value=0).astype(int)
+
+    positions = np.zeros(len(s), dtype=int)
+    for j, score in enumerate(s.to_numpy(dtype=float)):
+        if not np.isfinite(score):
+            continue
+        old = previous.iloc[j]
+        if old == 0:
+            positions[j] = 1 if score < -s_open else -1 if score > s_open else 0
+        elif old == 1:
+            positions[j] = -1 if score > s_open else 0 if score > -s_close_long else 1
+        else:
+            positions[j] = 1 if score < -s_open else 0 if score < s_close_short else -1
+    return pd.Series(positions, index=s.index, dtype=int)
 
 
 def hedge_weights(positions, eigenportfolios, betas) -> np.ndarray:
@@ -209,8 +274,20 @@ def hedge_weights(positions, eigenportfolios, betas) -> np.ndarray:
 
     TODO (Card B, step 4).
     """
-    raise NotImplementedError("Card B: hedge_weights is not implemented yet "
-                              "(see docs/tasks/card_B_statarb.md)")
+    q = np.asarray(positions, dtype=float)
+    Q = np.asarray(eigenportfolios, dtype=float)
+    B = np.asarray(betas, dtype=float)
+    if q.ndim != 1 or Q.ndim != 2 or B.ndim != 2:
+        raise ValueError("positions must be 1-D and factor matrices must be 2-D")
+    p = len(q)
+    if Q.shape != B.shape or Q.shape[0] != p:
+        raise ValueError("positions, eigenportfolios and betas have incompatible shapes")
+
+    hedged = q - Q @ (B.T @ q)
+    gross = np.abs(hedged).sum()
+    if gross <= 1e-12:
+        return np.zeros(p, dtype=float)
+    return hedged / gross
 
 
 class ResidualReversion(Strategy):
@@ -317,5 +394,26 @@ class ResidualReversion(Strategy):
         7. ``w = hedge_weights(q.to_numpy(), model.eigenportfolios(), betas)``.
         8. Return ``pd.Series(w, index=window.returns.columns, name=self.name)``.
         """
-        raise NotImplementedError("Card B: ResidualReversion.weights is not implemented yet "
-                                  "(see docs/tasks/card_B_statarb.md)")
+        returns = window.returns.to_numpy()
+        effective_length = min(self.estimation_window, len(returns))
+        if effective_length < MIN_ESTIMATION_ROWS:
+            raise ValueError("too few rows for residual reversion")
+        if model.k_ + 2 > effective_length:
+            raise ValueError("too few rows for the requested number of factors")
+
+        residuals, betas = model.residual_returns(returns[-effective_length:])
+        max_tau = effective_length / 2 if self.max_tau is None else self.max_tau
+        scores = s_scores(residuals, max_tau=max_tau, center=self.center)
+        columns = window.returns.columns
+        score_series = pd.Series(scores["s"].to_numpy(), index=columns)
+        positions = update_positions(
+            score_series,
+            context.state.get("positions"),
+            s_open=self.s_open,
+            s_close_long=self.s_close_long,
+            s_close_short=self.s_close_short,
+        )
+        context.state["positions"] = positions
+        context.state["s_scores"] = scores
+        weights = hedge_weights(positions.to_numpy(), model.eigenportfolios(), betas)
+        return pd.Series(weights, index=columns, name=self.name)
